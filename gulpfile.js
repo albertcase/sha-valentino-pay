@@ -47,17 +47,17 @@ gulp.task('css',['clean'],function () {
         // 2. 压缩文件
         .pipe(minify())
         // 3. 另存为压缩文件
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./src/dist/css'));
 });
 
 // Concatenate & Minify
 gulp.task('scripts_home',['clean'], function() {
     return gulp.src(path.homejs)
         .pipe(concat('home_all.js'))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('./src/dist'))
         .pipe(rename('home_all.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('./src/dist/js'));
 });
 
 // Watch Files For Changes
