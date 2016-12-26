@@ -67,6 +67,6 @@ gulp.task('watch', ['clean'],function() {
 });
 
 // Default Task
-gulp.task('default', ['watch', 'scripts_home','images','css','browser-sync']);
+gulp.task('default', ['watch', 'scripts_home','css','browser-sync']);
 
 
