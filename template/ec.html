@@ -55,11 +55,12 @@
 			<div class="gorosso">探索ROSSO VALENTINO系列</div>
 		</div>
 		<!--form page-->
-		<div class="pin pin-2 current">
+		<div class="pin pin-2">
 			<div class="v-content">
 				<div class="logo">
 					<img src="/src/images/logo.jpg" alt=""/>
 				</div>
+				<!-- 选中购买的商品信息-->
 				<div class="product-block">
 					<span class="product-img"><img src="/src/images/product-1.png" alt=""/></span>
 					<span class="product-name">红色SPIKE铆钉链条包</span>
@@ -68,7 +69,8 @@
 						<span class="product-price">¥ 11,000</span>
 					</div>
 				</div>
-				<form id="form-contact">
+				<!-- 添加修改地址-->
+				<form id="form-contact" class="hide">
 					<h3 class="title">请完善收货信息</h3>
 					<div class="form-information">
 						<div class="input-box input-box-title">
@@ -101,10 +103,45 @@
 							<label for="input-receive">我已阅读并接受<a href="http://www.baidu.com">隐私政策</a></label>
 						</div>
 					</div>
-					<div class="btn btn-submit"><span>提交</span></div>
+					<!--<div class="btn btn-submit"><span>提交</span></div>-->
 				</form>
 			</div>
-
+		</div>
+		<div class="pin pin-3 current">
+			<div class="logo">
+				<img src="/src/images/logo.jpg" alt=""/>
+			</div>
+			<h3 class="title">请完善收货信息</h3>
+			<div class="btn-back">返回修改</div>
+			<!-- 选中购买的商品信息-->
+			<div class="product-block">
+				<span class="product-img"><img src="/src/images/product-1.png" alt=""/></span>
+				<span class="product-name">红色SPIKE铆钉链条包</span>
+				<div class="num-price">
+					<span class="product-num">x1</span>
+					<span class="product-price">¥ 11,000</span>
+				</div>
+			</div>
+			<!-- 确认收货信息-->
+			<div class="order-block">
+				<div class="order-item order-item-name">
+					<label for="order-name">收货人</label>
+					<span class="name" id="order-name">kdkdk</span>
+				</div>
+				<div class="order-item order-item-phone">
+					<label for="order-phone">联系电话</label>
+					<span class="phone" id="order-phone">kdkdk</span>
+				</div>
+				<div class="order-item order-item-mail">
+					<label for="order-mail">电子邮箱</label>
+					<span class="mail" id="order-mail">kdkdk</span>
+				</div>
+				<div class="order-item order-item-address">
+					<label for="order-address">收货地址</label>
+					<span class="address" id="order-address">kdkdk</span>
+				</div>
+			</div>
+			<div class="btn btn-submit btn-submit-order"><span>确认付款</span></div>
 		</div>
 
 	</div>

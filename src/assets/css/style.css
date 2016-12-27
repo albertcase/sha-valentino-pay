@@ -1471,6 +1471,12 @@ html, body {
   z-index: 1;
 }
 
+.title {
+  font-size: 0.24rem;
+  text-align: center;
+  margin: 0.2rem auto;
+}
+
 .logo {
   width: 3.33rem;
   height: 0.94rem;
@@ -1582,11 +1588,8 @@ html, body {
 }
 
 .pin-2 {
-  padding: 0 0.6rem;
+  padding: 0 0.4rem;
   box-sizing: border-box;
-}
-.pin-2 .logo {
-  padding: 0;
 }
 .pin-2 .v-content {
   width: calc(100% - 1.2rem);
@@ -1605,22 +1608,25 @@ html, body {
   float: left;
 }
 .product-block .product-img {
-  width: 30%;
+  width: 45%;
+}
+.product-block .product-name {
+  color: #fdc5cb;
+  font-size: 0.24rem;
+  letter-spacing: 0px;
 }
 .product-block .num-price {
   position: absolute;
-  bottom: 0.3rem;
+  bottom: 0.2rem;
   right: 0.2rem;
+  letter-spacing: 0px;
+  color: #fdc5cb;
+  font-size: 0.24rem;
 }
 .product-block .num-price span {
   display: block;
 }
 
-#form-contact .title {
-  font-size: 0.24rem;
-  text-align: center;
-  margin: 0.2rem auto;
-}
 #form-contact .input-box {
   margin-bottom: 0.3rem;
 }
@@ -1662,4 +1668,45 @@ html, body {
 }
 #form-contact .input-checkbox a {
   color: #ffafb0;
+}
+
+.order-block {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #8c151f;
+  padding: 0.3rem 0.2rem;
+  margin-top: 0.15rem;
+}
+.order-block .order-item {
+  margin-bottom: 0.25rem;
+}
+.order-block .order-item label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-submit-order {
+  margin-top: 1.2rem;
+}
+
+.pin-3 {
+  padding: 0 0.4rem;
+  box-sizing: border-box;
+}
+.pin-3 .title {
+  margin: 0.6rem 0 0.3rem;
+}
+.pin-3 .btn-back {
+  position: relative;
+  margin-bottom: 0.2rem;
+}
+.pin-3 .btn-back:before {
+  content: '';
+  display: inline-block;
+  margin-right: 0.1rem;
+  width: 0.2rem;
+  height: 0.23rem;
+  background: url("../../images/arrow-left.png") no-repeat;
+  background-size: 100%;
 }

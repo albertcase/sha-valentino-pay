@@ -28,6 +28,12 @@ html,body{
   }
 }
 
+.title{
+  font-size: 0.24rem;
+  text-align: center;
+  margin: 0.2rem auto;
+}
+
 .logo{
   @include size(3.33rem,0.94rem);
   padding-top: 0.4rem;
@@ -133,10 +139,10 @@ html,body{
 
 //for pin2
 .pin-2{
-  padding: 0 0.6rem;
+  padding: 0 0.4rem;
   box-sizing: border-box;
   .logo{
-    padding: 0;
+    //padding: 0;
   }
   .v-content{
     width: calc(100% - 1.2rem);
@@ -154,12 +160,20 @@ html,body{
     float: left;
   }
   .product-img{
-    width: 30%;
+    width: 45%;
+  }
+  .product-name{
+    color: #fdc5cb;
+    font-size: 0.24rem;
+    letter-spacing: 0px;
   }
   .num-price{
     position: absolute;
-    bottom: 0.3rem;
+    bottom: 0.2rem;
     right: 0.2rem;
+    letter-spacing: 0px;
+    color: #fdc5cb;
+    font-size: 0.24rem;
     span{
       display: block;
     }
@@ -167,11 +181,6 @@ html,body{
 }
 
 #form-contact{
-  .title{
-    font-size: 0.24rem;
-    text-align: center;
-    margin: 0.2rem auto;
-  }
   .input-box{
     margin-bottom: 0.3rem;
   }
@@ -212,6 +221,48 @@ html,body{
     }
     a{
       color: #ffafb0;
+    }
+  }
+}
+
+//order-block
+.order-block{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #8c151f;
+  padding: 0.3rem 0.2rem;
+  margin-top: 0.15rem;
+  .order-item{
+    margin-bottom: 0.25rem;
+    label{
+      color: rgba(255,255,255,0.8);
+    }
+  }
+
+}
+.btn-submit-order{
+  margin-top: 1.2rem;
+}
+
+//for pin-3
+.pin-3{
+  padding: 0 0.4rem;
+  box-sizing: border-box;
+  .title{
+    margin: 0.6rem 0 0.3rem;
+  }
+  .btn-back{
+    position: relative;
+    margin-bottom: 0.2rem;
+    &:before{
+      content: '';
+      display: inline-block;
+      margin-right: 0.1rem;
+      @include size(0.2rem,0.23rem);
+      background: url('../../images/arrow-left.png') no-repeat;
+      background-size: 100%;
     }
   }
 }
