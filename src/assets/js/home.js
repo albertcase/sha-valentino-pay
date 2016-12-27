@@ -28,7 +28,7 @@
         //    }
         //});
 
-        self.welcomePage();
+        //self.welcomePage();
 
 
     };

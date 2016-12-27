@@ -578,7 +578,7 @@ Api = {
         //    }
         //});
 
-        self.welcomePage();
+        //self.welcomePage();
 
 
     };
