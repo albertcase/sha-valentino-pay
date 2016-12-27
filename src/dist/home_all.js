@@ -558,39 +558,27 @@ Api = {
         var self = this;
         //    loading first
         var baseurl = 'dist/images/';
-        var imagesArray = [
-            baseurl+'logo.png',
-            baseurl+'a3-mask.png',
-            baseurl+'a3.png',
-            baseurl+'a4.png',
-            baseurl+'flush.png',
-            baseurl+'icon-btn.png',
-            baseurl+'icon-direction.png',
-            baseurl+'input-bg.png',
-            baseurl+'p1-t1.png',
-            baseurl+'p1-t2.png',
-            baseurl+'p1-t3.png',
-            baseurl+'share-pop.png',
-            baseurl+'share.jpg',
-            baseurl+'spritesheet.png',
-            baseurl+'btn-bg.jpg',
-        ];
-        var i = 0;
-        new preLoader(imagesArray, {
-            onProgress: function(){
-                i++;
-                var progress = parseInt(i/imagesArray.length*100);
-                $('.preload .v-content').html('已加载'+progress+'%');
-            },
-            onComplete: function(){
-                //
-                //
-                $('.preload').remove();
-                $('.container').addClass('fade');
-                self.welcomePage();
+        //var imagesArray = [
+        //    baseurl+'logo.png',
+        //];
+        //var i = 0;
+        //new preLoader(imagesArray, {
+        //    onProgress: function(){
+        //        i++;
+        //        var progress = parseInt(i/imagesArray.length*100);
+        //        $('.preload .v-content').html('已加载'+progress+'%');
+        //    },
+        //    onComplete: function(){
+        //        //
+        //        //
+        //        $('.preload').remove();
+        //        $('.container').addClass('fade');
+        //
+        //
+        //    }
+        //});
 
-            }
-        });
+        self.welcomePage();
 
 
     };
@@ -598,59 +586,20 @@ Api = {
     louis.prototype.welcomePage = function(){
         var self = this;
         Common.gotoPin(0);
+        var mySwiper = new Swiper ('.swiper-container', {
+            // Optional parameters
+            loop: true,
 
-        // show light
-        $('.bg-light').addClass('change');
+            // If we need pagination
+            pagination: '.swiper-pagination',
 
-        //show all
-        var showall = setTimeout(function(){
-            $('.bg-1').addClass('change');
-            clearTimeout(showall);
-        },1000);  //the light animation is 3s
+            // Navigation arrows
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
 
-        var hideLight = setTimeout(function(){
-            $('.bg-light').removeClass('change');
-            clearTimeout(hideLight);
-        },1500);
-
-        $('.pin-1').on('touchstart',function(){
-            _hmt.push(['_trackEvent', 'buttons', 'click', 'lightForHome']);
-            //console.log('do animate');
-            $('.bg-2').addClass('doani');
-            $('.tips').removeClass('fade delay2').addClass('fadeout');
-            $('.p1-t2').addClass('fadeinup');
-            //$('.logo').removeClass('fade').addClass('fadeout');
-            setTimeout(function(){
-                $('.tips').addClass('fade replace').removeClass('fadeout').html('<img src="dist/images/p1-t3.png">');
-            },1000);
-
-        //    if light,start do perspective ani
-            var doPers = setTimeout(function(){
-                $('.bg-1').addClass('doani');
-                clearTimeout(doPers);
-            },3000);
-
-            var showProduct = setTimeout(function(){
-                $('.showproduct').addClass('change');
-                $('.logo').removeClass('fadeindown');
-                $('.tips').removeClass('fade');
-                $('.p1-t2').removeClass('fadeinup');
-                clearTimeout(showProduct);
-            },3500);
-
-            var hideProduct = setTimeout(function(){
-                $('.showproduct').removeClass('change');
-                clearTimeout(hideProduct);
-            },5500);
-
-
-        //    if animate finished,go next page
-            var goNext = setTimeout(function(){
-                self.writeCard();
-                clearTimeout(goNext);
-            },6500);
-
-        });
+            // And if we need scrollbar
+            //scrollbar: '.swiper-scrollbar',
+        })
 
     };
 
@@ -849,8 +798,8 @@ Api = {
     //dom ready
     $(document).ready(function(){
 
-        //var seasonGreeting = new louis();
-        //seasonGreeting.init();
+        var seasonGreeting = new louis();
+        seasonGreeting.init();
 
 
     });

@@ -9,43 +9,10 @@ html,body{
   top: 0;
   z-index: 1;
   @include size(100%,100%);
-  background: #000;
-}
-.container{
-  opacity: 0;
-}
-.bg{
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  @include size(100%,100%);
-  overflow: hidden;
-  .bg-layer-1{
-    position: absolute;
-    left: 0;
-    top: 0;
-    @include size(2.67rem,2.56rem);
-    &.bg-right{
-      left: auto;
-      right: -0.2rem;
-      @include transform(rotate(90deg));
-
-    }
-  }
-  .bg-layer-3{
-    position: absolute;
-    right: -0px;
-    top: -0px;
-    @include size(7.5rem,2.2rem);
-    //background-image: url("../images/rc/rc-1.png");
-    //background-repeat: no-repeat;
-    //background-size: 100% 100%;
-  }
 }
 
 .pin{
-  opacity: 0;
+  //opacity: 0;
   z-index: -10;
   position: absolute;
   left: 0;
@@ -53,62 +20,27 @@ html,body{
   @include size(100%,100%);
   overflow: hidden;
   @include transition(opacity 1s);
-  background: #000;
+  display: none;
   &.current{
     display: block;
-    opacity: 1;
+    //opacity: 1;
     z-index: 1;
   }
 }
 
 .logo{
-  opacity: 0;
-  @include size(2rem,1.63rem);
+  @include size(3.33rem,0.94rem);
   padding-top: 0.6rem;
   margin: 0 auto 0.4rem;
 }
 .btn{
-  display: inline-block;
-  &:before{
-    content: '';
-    display: block;
-    @include size(0.5rem,0.5rem);
-    background: url('../images/btn-bg.jpg') no-repeat;
-    background-size: 100% 100%;
-    margin: 0 auto;
-    box-shadow: 0 0 20px #fdeadb;
-    @include animation(light 2.3s linear infinite);
-    @include keyframes(light){
-      0%{
-        box-shadow: 0 0 5px #fdeadb;
-      }
-      50%{
-        box-shadow: 0 0 30px #fdeadb;
-      }
-      100%{
-        box-shadow: 0 0 5px #fdeadb;
-      }
-    }
-  }
+  text-align: center;
   span{
-    position: relative;
     display: inline-block;
-    margin-top: 0.3rem;
-    padding-left: 0.3rem;
-    color: #ffffff;
-    font-size: 0.28rem;
-    &:before{
-      content: '';
-      display: inline-block;
-      position: absolute;
-      left: 0.2rem;
-      top: 50%;
-      @include transform(translate(-100%,-50%));
-      @include size(0.28rem,0.31rem);
-      background: url("../images/icon-btn.png") left center no-repeat;
-      background-size: 100% 100%;
-    }
-
+    padding: 0.2rem 1rem;
+    background: #6c0000;
+    color: #f95f60;
+    font-size: 0.32rem;
   }
 }
 
@@ -121,262 +53,79 @@ html,body{
 }
 
 
-/*For pin1*/
+//for pin-1
 .pin-1{
-  .v-content{
-    @include size(7.5rem,12.04rem);
+  background: url('../../images/bg-1.jpg') no-repeat;
+  background-size: 100%;
+  .btn-buy{
+    margin-top: 1.2rem;
   }
-  .bg-layer{
+  .gorosso{
     position: absolute;
+    bottom: 0;
     left: 0;
-    top: 0;
-    @include size(100%,100%);
-    z-index: 1;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;;
-    perspective-origin: 50%;
-    -webkit-perspective-origin: 50%;
-    perspective: 500px;
-    -webkit-perspective: 500px;
-    .bl{
-      position: absolute;
-      left: 0;
-      top: 0;
-      @include size(100%,100%);
-      z-index: 1;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: top;
-    }
-    .bg-1{
-      &.doani{
-        @include animation(move-origin 2s 1 forwards);
-      }
-      @include keyframes(move-origin){
-        0%{
-          transform: translateZ(0rem);
-          opacity: 1;
-        }
-        100%  {
-          transform: translateZ(4rem);
-          opacity: 0;
-        }
-      }
-    }
-    .bg-1{
-
-    }
-    .bg-2{
-      //-webkit-mask-position: center;
-      background-image: url("../images/a4.png");
-      -webkit-mask-image: url('../images/spritesheet.png');
-      -webkit-mask-size: 3700%;
-      -webkit-mask-position: -3600% 0%;
-      &.doani{
-        @include animation(circle 3s steps(36) 1 forwards);
-      }
-      @include keyframes(circle){
-        0%{
-          -webkit-mask-position: -3600% 0%;
-        }
-        100%{
-          -webkit-mask-position: -0% 0%;
-        }
-      }
-    }
-    .bg-1{
-      opacity: 0;
-      @include transition(opacity 2s ease-out);
-      &.change{
-        opacity: 1;
-      }
-    }
-    .bg-light{
-      opacity: 0;
-      background: url("../images/a3.png") no-repeat;
-      background-size: 100%;
-      -webkit-mask-size: 100%;
-      -webkit-mask-position: 0% 0%;
-      -webkit-mask-image: url('../images/a3-mask.png');
-      @include transition(opacity 1s ease);
-      &.change{
-        opacity: 1;
-      }
-    }
-  }
-  .logo{
-    position: relative;
-    z-index: 2;
-  }
-  .p1-t2{
-    opacity: 0;
-    position: absolute;
-    bottom: 0.7rem;
-    left: 50%;
-    margin-left: -1.16rem;
-    //@include transform(translateX(-50%));
-    @include size(2.32rem,0.59rem);
-  }
-  .tips{
-    opacity: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 10;
-    @include transform(translate(-50%,-0.7rem));
-    >img{
-      @include size(3.37rem,auto);
-    }
-    &.replace{
-      @include transform(translate(-50%,-0.35rem));
-      //>img{
-      //  @include size(3.37rem,0.43rem);
-      //}
-    }
-    .icon{
-      display: block;
-      @include size(0.64rem,0.64rem);
-      margin: 0 auto 0.2rem;
-    }
-  }
-  .showproduct{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
-    @include size(100%,100%);
-    @include transition(opacity 1s);
-    background: #000;
-    &.change{
-      opacity: 1;
-      z-index: 10;
-    }
+    @include size(100vw,1.1rem);
+    line-height: 1.1rem;
+    background: #900218;
+    text-align: center;
+    color: #fdc5cb;
+    font-size: 0.28rem;
   }
 }
 
-#circleProcess {
+//override swiper css
+.product-wrap{
+  margin-top: 1.8rem;
+  text-align: center;
+}
+#swiper-products{
   position: relative;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  stroke-dasharray: 255%;
-  stroke-dashoffset: 255%;
-  stroke: #6FEC6F;
-  fill: none;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
-
-/*End pin1*/
-
-//Start pin2
-.flush-bg{
-  @include size(100%,100%);
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  //@include animation(flush 1s steps(3) infinite);
-  span{
-    display: block;
-    @include size(100%,100%);
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background: url("../images/flush.png") no-repeat;
-    background-size: 400%;
-    opacity: 0;
-    &.item-1{
-      opacity: 1;
-      background-position: 0% 0%;
-      @include animation(flush 5s 0s infinite);
-    }
-    &.item-2{
-      background-position: 33.33% 0%;
-      @include animation(flush 5s 1.3s infinite);
-    }
-    &.item-3{
-      background-position: 66.66% 0%;
-      @include animation(flush 5s 2.7s infinite);
-    }
-    &.item-4{
-      background-position: 100% 0%;
-      @include animation(flush 6s 3.7s infinite);
-    }
+  .swiper-container {
+    width: 5rem;
+    //height: 300px;
+  };
+  .swiper-button-next,
+  .swiper-button-prev{
+    @include size(0.3rem,0.3rem);
+    background-image: none;
+    margin-top: -0.15rem;
+  }
+  .swiper-button-prev{
+    border-left: #b10707 0.08rem solid;
+    border-bottom: #b10707 0.08rem solid;
+    @include transform(rotate(45deg));
+    left: 0.4rem;
+  }
+  .swiper-button-next{
+    border-right: #b10707 0.08rem solid;
+    border-bottom: #b10707 0.08rem solid;
+    @include transform(rotate(-45deg));
+    right: 0.4rem;
   }
 }
-@include keyframes(flush){
-  0%{
-    opacity: 0;
+.product-wrap{
+  .swiper-pagination{
+    position: relative;
+    margin: 0.5rem auto;
   }
-  33%{
+  .swiper-pagination-bullet{
+    @include size(0.1rem,0.1rem);
+    margin: 0.15rem;
+    background: #660112;
     opacity: 1;
   }
-  66%{
-    opacity: 0;
+  .swiper-pagination-bullet-active{
+    background: #ef4041;
   }
-  100%{
-    opacity: 0;
-  }
-  //100%{
-  //  opacity: 0;
-  //}
-}
-
-
-//for letter-wrap
-.letter-wrap{
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  input[type="text"],textarea{
-    border: none;
-    background-color: transparent;
-    background-image: url("../images/input-bg.png");
-    text-align: center;
-    color: #ffffff;
+  .product-name{
+    margin-bottom: 0.2rem;
     font-size: 0.28rem;
-    &:disabled{
-      opacity: 1;
-    }
   }
-  input[type="text"]{
-    width: 3.5rem;
-    height: 0.6rem;
-    margin: 0 auto;
-    background-position: bottom;
-    background-repeat: repeat-x;
-    background-size: auto 0.6rem;
+  .product-price{
+    font-size: 0.3rem;
   }
-  textarea{
-    width: 5.6rem;
-    background-repeat: repeat;
-    background-size: auto 0.6rem;
-    height: 1.8rem;
-    line-height: 0.6rem;
-    margin: 0.7rem auto 1.4rem;
-  }
-  .letter-bottom{
-    margin-bottom: 1.4rem;
-  }
-
-
-}
-
-//For pin-2
-
-//for share
-#popup-share{
-  opacity: 0.9;
-  padding: 0;
-  background: rgba(23,10,1,1);
 }
 
 
+
+//end swiper js
