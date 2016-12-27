@@ -30,7 +30,7 @@ html,body{
 
 .logo{
   @include size(3.33rem,0.94rem);
-  padding-top: 0.6rem;
+  padding-top: 0.4rem;
   margin: 0 auto 0.4rem;
 }
 .btn{
@@ -133,8 +133,14 @@ html,body{
 
 //for pin2
 .pin-2{
-  padding: 0.6rem;
+  padding: 0 0.6rem;
   box-sizing: border-box;
+  .logo{
+    padding: 0;
+  }
+  .v-content{
+    width: calc(100% - 1.2rem);
+  }
 }
 .product-block{
   position: relative;
