@@ -129,3 +129,83 @@ html,body{
 
 
 //end swiper js
+
+
+//for pin2
+.pin-2{
+  padding: 0.6rem;
+  box-sizing: border-box;
+}
+.product-block{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #8c151f;
+  padding: 0.3rem 0.2rem;
+  >span{
+    display: block;
+    float: left;
+  }
+  .product-img{
+    width: 30%;
+  }
+  .num-price{
+    position: absolute;
+    bottom: 0.3rem;
+    right: 0.2rem;
+    span{
+      display: block;
+    }
+  }
+}
+
+#form-contact{
+  .title{
+    font-size: 0.24rem;
+    text-align: center;
+    margin: 0.2rem auto;
+  }
+  .input-box{
+    margin-bottom: 0.3rem;
+  }
+  input[type="text"],
+  input[type="tel"],select{
+    background: #fff;
+    padding: 0.3rem;
+    font-size: 0.3rem;
+    border-radius: 0;
+    border: none;
+    box-sizing: border-box;
+  }
+  .input-box-mobile input[type="tel"],
+  .input-box-mail input[type="text"],
+  .input-box-address-details input[type="text"]{
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #input-title{
+    width: 32%;
+    text-align: center;
+  }
+  #input-name{
+    width: 60%;
+    float: right;
+  }
+  #input-province,
+  #input-city{
+    width: 46%;
+  }
+  #input-city{
+    float: right;
+  }
+  .input-checkbox{
+    text-align: center;
+    label{
+      color: #ffafb0;
+    }
+    a{
+      color: #ffafb0;
+    }
+  }
+}

@@ -1580,3 +1580,80 @@ html, body {
 .product-wrap .product-price {
   font-size: 0.3rem;
 }
+
+.pin-2 {
+  padding: 0.6rem;
+  box-sizing: border-box;
+}
+
+.product-block {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #8c151f;
+  padding: 0.3rem 0.2rem;
+}
+.product-block > span {
+  display: block;
+  float: left;
+}
+.product-block .product-img {
+  width: 30%;
+}
+.product-block .num-price {
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.2rem;
+}
+.product-block .num-price span {
+  display: block;
+}
+
+#form-contact .title {
+  font-size: 0.24rem;
+  text-align: center;
+  margin: 0.2rem auto;
+}
+#form-contact .input-box {
+  margin-bottom: 0.3rem;
+}
+#form-contact input[type="text"],
+#form-contact input[type="tel"], #form-contact select {
+  background: #fff;
+  padding: 0.3rem;
+  font-size: 0.3rem;
+  border-radius: 0;
+  border: none;
+  box-sizing: border-box;
+}
+#form-contact .input-box-mobile input[type="tel"],
+#form-contact .input-box-mail input[type="text"],
+#form-contact .input-box-address-details input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+#form-contact #input-title {
+  width: 32%;
+  text-align: center;
+}
+#form-contact #input-name {
+  width: 60%;
+  float: right;
+}
+#form-contact #input-province,
+#form-contact #input-city {
+  width: 46%;
+}
+#form-contact #input-city {
+  float: right;
+}
+#form-contact .input-checkbox {
+  text-align: center;
+}
+#form-contact .input-checkbox label {
+  color: #ffafb0;
+}
+#form-contact .input-checkbox a {
+  color: #ffafb0;
+}
