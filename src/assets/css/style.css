@@ -1525,6 +1525,10 @@ html, body {
   color: #fdc5cb;
   font-size: 0.28rem;
 }
+.pin-1 .gorosso a {
+  color: #fdc5cb;
+  text-decoration: none;
+}
 
 .product-wrap {
   margin-top: 1.8rem;
@@ -1632,12 +1636,19 @@ html, body {
 }
 #form-contact input[type="text"],
 #form-contact input[type="tel"], #form-contact select {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  padding: 0 0.3rem;
   background: #fff;
-  padding: 0.3rem;
   font-size: 0.3rem;
   border-radius: 0;
   border: none;
   box-sizing: border-box;
+  -webkit-appearance: none;
+}
+#form-contact select {
+  background: #fff url("../../images/polygon-down.png") calc(100% - 10px) center no-repeat;
+  background-size: 0.13rem;
 }
 #form-contact .input-box-mobile input[type="tel"],
 #form-contact .input-box-mail input[type="text"],
