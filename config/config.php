@@ -12,8 +12,10 @@ define("WECHAT_VENDOR", 'default'); // default | curio
 
 //Wechat config info
 define("TOKEN", '?????');
-define("APPID", 'wx4868f82730292835');
-define("APPSECRET", 'b994d3233e85e53712189f21880b83e3');
+define("APPID", 'wxdffb071f687633b8');
+define("APPSECRET", '216b4e8fa0127aa9b8abaa7ce8fa524e');
+define("APPMCHID", '1346115601');
+define("APPKEY", '0e861438632e4359929e9dcc143acd47');
 define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '100');
 
@@ -35,7 +37,9 @@ define("SCOPE", 'snsapi_base');
 
 //Wechat Authorize Page
 define("AUTHORIZE_URL", '[
-	"/"
+	"/",
+	"/pay",
+	"/pay/pay.do"
 ]');
 
 //Account Access

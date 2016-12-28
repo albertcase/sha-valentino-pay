@@ -8,11 +8,11 @@ class WechatController extends Controller {
 	public function callbackAction() {
 		$request = $this->request;
 		$fields = array(
-			//'redirect_uri' => array('notnull', '120'),
+			'redirect_uri' => array('notnull', '120'),
 			'code' => array('notnull', '121'),
 		);
 		$request->validation($fields);
-		$redirect_uri = $request->query->get('redirect_uri')? $request->query->get('redirect_uri') : '/';
+		$redirect_uri = $request->query->get('redirect_uri');
 		$code = $request->query->get('code');
 		$url = urldecode($redirect_uri);
 		$wechatUserAPI = new \Lib\WechatAPI();

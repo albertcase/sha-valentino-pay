@@ -108,4 +108,45 @@ class DatabaseAPI {
 		return NULL;
 	}
 
+	/**
+	 * 
+	 */
+	public function insertWxpayLog($data){
+		$sql = "INSERT INTO `wxpay_log` SET `data` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("s", $data);
+		if($res->execute()) 
+			return $res->insert_id;
+		else 
+			return FALSE;
+	}
+
+	/**
+	 * 
+	 */
+	public function insertOrder($data){
+		$nowtime = NOWTIME;
+		$sql = "INSERT INTO `order` SET `uid` = ?, `sex` = ?, `name` = ?, `mobile` = ?, `email` = ?, `province` = ?, `city` = ?, `address` = ?, `orderid` = ?, `start` = ?, `expire` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("sssssssssss", $data->uid, $data->sex, $data->name, $data->mobile, $data->email, $data->province, $data->city, $data->address, $data->orderid, $data->start, $data->expire);
+		if($res->execute()) 
+			return $res->insert_id;
+		else 
+			return FALSE;
+	}
+
+	/**
+	 * 
+	 */
+	public function insertSubmit($data){
+		$nowtime = NOWTIME;
+		$sql = "INSERT INTO `submit` SET `uid` = ?, `sex` = ?, `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `store` = ?, `month` = ?, `day` = ?, `time` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("ssssssssss", $data->uid, $data->sex, $data->name, $data->mobile, $data->province, $data->city, $data->store, $data->month, $data->day, $data->time);
+		if($res->execute()) 
+			return $res->insert_id;
+		else 
+			return FALSE;
+	}
+
 }

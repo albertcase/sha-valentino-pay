@@ -24,7 +24,7 @@ class RequestListener {
         	if(in_array($current_router, $authorize_url)) {
         		$current_url = $request->getUrl(TRUE);
         		$function_name = WECHAT_VENDOR . 'WechatAuthoize';
-				call_user_func_array(array($this, $function_name), array($request, $current_ur));		
+				call_user_func_array(array($this, $function_name), array($request, $current_url));		
         	}
         }
 	}
