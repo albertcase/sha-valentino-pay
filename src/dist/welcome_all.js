@@ -60,13 +60,13 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/welcome';
+			window.location.href = '/ec';
 		},
 		goOrderPage:function(){
-			window.location.href = '/order';
+			window.location.href = '/ec/order';
 		},
 		goPayPage:function(){
-			window.location.href = '/pay';
+			window.location.href = '/ec/pay';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
