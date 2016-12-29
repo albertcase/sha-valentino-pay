@@ -69,4 +69,37 @@ class RedisAPI {
 		$wechatJSSDKAPI = new \Lib\JSSDKAPI();
 		return json_encode($wechatJSSDKAPI->getJSSDKConfig(APPID, $jsapi_ticket, $url));
 	}
+
+	//删除redis
+	public function flush() {
+		$this->_redis->flushAll();
+		return 1;
+	}
+
+	//查询库存量
+	public function quotaload() {
+		return count($this->_redis->keys("product:quota:*"));
+	}
+
+	//占用临时库存量
+	public function quotaset($orderid) {
+		$quota_key = 'product:quota:'.$orderid;
+		$this->_redis->set($quota_key, 1);
+		$this->_redis->setTimeout($quota_key, 300);
+	}
+
+	//占用永久库存量
+	public function quotasetall($orderid) {
+		$quota_key = 'product:quota:'.$orderid;
+		$this->_redis->set($quota_key, 1);
+	}
+
+	//检测库存
+	public function quotacheck($orderid) {
+		$quota_key = 'product:quota:'.$orderid;
+		if ($this->_redis->get($quota_key)) {
+			return 1;
+		}
+		return 0;
+	}
 }
