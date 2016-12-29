@@ -61,7 +61,7 @@ class PageController extends Controller {
 		$order = \WxPayApi::unifiedOrder($input);
 		$tools = new \JsApiPay();
 		$jsApiParameters = $tools->GetJsApiParameters($order);
-		$this->render('pay', array('jsApiParameters' => $jsApiParameters));
+		$this->render('pay', array('jsApiParameters' => $jsApiParameters, 'info' => $rs));
 	}
 
 	public function notifyAction() {

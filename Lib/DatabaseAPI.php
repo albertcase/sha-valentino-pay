@@ -156,16 +156,23 @@ class DatabaseAPI {
 	}
 
 	public function loadOrderByUid($uid) {
-		$sql = "SELECT `orderid`, `start`, `expire` FROM `order` WHERE `uid` = ? and `status` = 0 order by id desc limit 1"; 
+		$sql = "SELECT `orderid`, `start`, `expire`, `sex`, `name`, `mobile`, `email`, `province`, `city`, `address` FROM `order` WHERE `uid` = ? and `status` = 0 order by id desc limit 1"; 
 		$res = $this->connect()->prepare($sql);
 		$res->bind_param("s", $uid);
 		$res->execute();
-		$res->bind_result($orderid, $start, $expire);
+		$res->bind_result($orderid, $start, $expire, $sex, $name, $mobile, $email, $province, $city, $address);
 		if($res->fetch()) {
 			$data = new \stdClass();
 			$data->orderid = $orderid;
 			$data->start = $start;
 			$data->expire = $expire;
+			$data->sex = $sex;
+			$data->name = $name;
+			$data->mobile = $mobile;
+			$data->email = $email;
+			$data->province = $province;
+			$data->city = $city;
+			$data->address = $address;
 			return $data;
 		}
 		return NULL;

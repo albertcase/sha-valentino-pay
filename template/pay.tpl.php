@@ -34,19 +34,19 @@
 			<div class="order-block">
 				<div class="order-item order-item-name">
 					<label for="order-name">收货人</label>
-					<span class="name" id="order-name">kdkdk</span>
+					<span class="name" id="order-name"><?php print $info->name;?>&nbsp<?php print $info->sex;?></span>
 				</div>
 				<div class="order-item order-item-phone">
 					<label for="order-phone">联系电话</label>
-					<span class="phone" id="order-phone">kdkdk</span>
+					<span class="phone" id="order-phone"><?php print $info->mobile;?></span>
 				</div>
 				<div class="order-item order-item-mail">
 					<label for="order-mail">电子邮箱</label>
-					<span class="mail" id="order-mail">kdkdk</span>
+					<span class="mail" id="order-mail"><?php print $info->email;?></span>
 				</div>
 				<div class="order-item order-item-address">
 					<label for="order-address">收货地址</label>
-					<span class="address" id="order-address">kdkdk</span>
+					<span class="address" id="order-address"><?php print $info->province;?> <?php print $info->city;?> <?php print $info->address;?></span>
 				</div>
 			</div>
 			<div class="btn btn-submit-order"><span>确认付款</span></div>
