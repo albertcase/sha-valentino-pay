@@ -36,14 +36,14 @@ class PageController extends Controller {
 		$rs = $databaseapi->loadOrderByUid($user->uid);
 		if (!$rs) {
 			//$this->statusPrint('2', '查询无订单');
-			$this->redirect("/");
+			$this->redirect("/ec");
 			exit;
 		}
 		
 		$redis = new \Lib\RedisAPI();
     	if (!$redis->quotacheck($rs->orderid)) {
     		//$this->statusPrint('3', '订单已失效');
-    		$this->redirect("/");
+    		$this->redirect("/ec");
 			exit;
     	}
 
