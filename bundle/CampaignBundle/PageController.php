@@ -22,6 +22,10 @@ class PageController extends Controller {
 		$this->statusPrint('200', 'Login as user:'. $openid);
     }
 
+    public function orderAction() {
+    	$this->render('order');
+    }
+
 	public function payAction() {
 		require_once VENDOR_ROOT."/lib/WxPay.Api.php";
 		require_once VENDOR_ROOT."/lib/WxPay.JsApiPay.php";
@@ -67,6 +71,8 @@ class PageController extends Controller {
 		if ($xml->return_code == 'SUCCESS' && $xml->result_code == 'SUCCESS') {
 			if ($databaseapi->checkStatus($xml->out_trade_no)) {
 				$databaseapi->updateStatus($xml->out_trade_no);
+				$redis = new \Lib\RedisAPI();
+    			$redis->quotasetall($xml->out_trade_no);
 			}
 		}
 		exit;

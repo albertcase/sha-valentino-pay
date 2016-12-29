@@ -12,9 +12,7 @@ class ApiController extends Controller {
 
         parent::__construct();
 
-        if(!$user->uid) {
-	        $this->statusPrint('100', 'access deny!');
-        } 
+        
     }
 
     public function formAction() {
@@ -46,7 +44,9 @@ class ApiController extends Controller {
     public function orderAction() {
 
     	global $user;
-
+    	if(!$user->uid) {
+	        $this->statusPrint('100', 'access deny!');
+        } 
     	$request = $this->request;
     	$fields = array(
 			'sex' => array('notnull', '120'),
@@ -92,7 +92,9 @@ class ApiController extends Controller {
     public function submitAction() {
 
     	global $user;
-
+    	if(!$user->uid) {
+	        $this->statusPrint('100', 'access deny!');
+        } 
     	$request = $this->request;
     	$fields = array(
 			'sex' => array('notnull', '120'),
@@ -132,7 +134,9 @@ class ApiController extends Controller {
 		require_once VENDOR_ROOT."/lib/WxPay.JsApiPay.php";
 
 		global $user;
-
+		if(!$user->uid) {
+	        $this->statusPrint('100', 'access deny!');
+        } 
 		//查询用户订单
 		$databaseapi = new \Lib\DatabaseAPI();
 		$rs = $databaseapi->loadOrderByUid($user->uid);
