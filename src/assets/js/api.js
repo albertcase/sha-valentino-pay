@@ -47,10 +47,10 @@ Api = {
     //预约到店
     //sex  name  mobile  province city store month day time
     reservation:function(obj,callback){
-        Common.msgBox('获取信息中...');
+        Common.msgBox('loading...');
         $.ajax({
             url:'/api/submit',
-            type:'GET',
+            type:'POST',
             dataType:'json',
             data:obj,
             success:function(data){
