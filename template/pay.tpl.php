@@ -49,7 +49,7 @@
     	<div class="container animate">
     		<div class="pin pin-3 current">
     			<div class="logo">
-    				<img src="/src/images/logo.jpg" alt=""/>
+    				<img src="/src/images/logo.png" alt=""/>
     			</div>
     			<h3 class="title">请完善收货信息</h3>
     			<div class="btn-back">返回修改</div>
