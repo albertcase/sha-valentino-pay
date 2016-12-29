@@ -112,9 +112,16 @@ class DatabaseAPI {
 	 * 
 	 */
 	public function insertWxpayLog($data){
-		$sql = "INSERT INTO `wxpay_log` SET `data` = ?"; 
+		$xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+		$sql = "INSERT INTO `wxpay_log` SET `data` = ?, `appid` = ?, `attach` = ?, `bank_type` = ?, `cash_fee` = ?,
+			`fee_type` = ?, `is_subscribe` = ?, `mch_id` = ?, `nonce_str` = ?, `openid` = ?, `out_trade_no` = ?,
+			`result_code` = ?, `return_code` = ?, `sign` = ?, `time_end` = ?, `total_fee` = ?, `trade_type` = ?,
+			`transaction_id` = ?"; 
 		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("s", $data);
+		$res->bind_param("ssssssssssssssssss", $data, $xml->appid, $xml->attach, $xml->bank_type, $xml->cash_fee,
+				$xml->fee_type, $xml->is_subscribe, $xml->mch_id, $xml->nonce_str, $xml->openid, $xml->out_trade_no,
+				$xml->result_code, $xml->return_code, $xml->sign, $xml->time_end, $xml->total_fee, $xml->trade_type,
+				$xml->transaction_id);
 		if($res->execute()) 
 			return $res->insert_id;
 		else 
@@ -147,6 +154,22 @@ class DatabaseAPI {
 			return $res->insert_id;
 		else 
 			return FALSE;
+	}
+
+	public function loadOrderByUid($uid) {
+		$sql = "SELECT `orderid`, `start`, `expire` FROM `order` WHERE `uid` = ? and `status` = 0 order by id desc limit 1"; 
+		$res = $this->connect()->prepare($sql);
+		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($orderid, $start, $expire);
+		if($res->fetch()) {
+			$data = new \stdClass();
+			$data->orderid = $orderid;
+			$data->start = $start;
+			$data->expire = $expire;
+			return $data;
+		}
+		return NULL;
 	}
 
 }

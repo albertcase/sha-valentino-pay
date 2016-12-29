@@ -1,7 +1,6 @@
 <?php
 namespace CampaignBundle;
-require_once VENDOR_ROOT."/lib/WxPay.Api.php";
-require_once VENDOR_ROOT."/lib/WxPay.JsApiPay.php";
+
 use Core\Controller;
 
 class PageController extends Controller {
@@ -12,27 +11,51 @@ class PageController extends Controller {
 		$this->render('index', array('config' => $config));
 	}
 
+	public function loginAction() {
+    	$request = $this->request;
+    	$openid = $request->query->get('openid') ? $request->query->get('openid') : "test";
+    	$userAPI = new \Lib\UserAPI();
+		$user = $userAPI->userLogin($openid);
+		if(!$user) {
+			$userAPI->userRegister($openid);
+		}
+		$this->statusPrint('200', 'Login as user:'. $openid);
+    }
+
 	public function payAction() {
-		global $user;
-		$openid = $user->openid;
+		require_once VENDOR_ROOT."/lib/WxPay.Api.php";
+		require_once VENDOR_ROOT."/lib/WxPay.JsApiPay.php";
+		//查询用户订单
+		$databaseapi = new \Lib\DatabaseAPI();
+		$rs = $databaseapi->loadOrderByUid($user->uid);
+		if (!$rs) {
+			//$this->statusPrint('2', '查询无订单');
+			$this->redirect("/");
+			exit;
+		}
+		
+		$redis = new \Lib\RedisAPI();
+    	if (!$redis->quotacheck($rs->orderid)) {
+    		//$this->statusPrint('3', '订单已失效');
+    		$this->redirect("/");
+			exit;
+    	}
+
 		$input = new \WxPayUnifiedOrder();
-		$input->SetBody("VALENTINO手提包");
-		$input->SetAttach("VALENTINO手提包");
-		$input->SetOut_trade_no(\WxPayConfig::MCHID.date("YmdHis"));
-		$input->SetTotal_fee("1");
-		$input->SetTime_start(date("YmdHis"));
-		$input->SetTime_expire(date("YmdHis", time() + 600));
-		$input->SetGoods_tag("VALENTINO手提包");
-		$input->SetNotify_url("http://longines.samesamechina.com/notify");
+		$input->SetBody("红色SPIKE铆钉链条包");
+		$input->SetAttach("红色SPIKE铆钉链条包");
+		$input->SetOut_trade_no($rs->orderid);
+		$input->SetTotal_fee("1100000");
+		$input->SetTime_start($rs->start);
+		$input->SetTime_expire($rs->expire);
+		$input->SetGoods_tag("红色SPIKE铆钉链条包");
+		$input->SetNotify_url(BASE_URL."/notify");
 		$input->SetTrade_type("JSAPI");
-		$input->SetOpenid($openid);
+		$input->SetOpenid($user->openid);
 		$order = \WxPayApi::unifiedOrder($input);
 		$tools = new \JsApiPay();
 		$jsApiParameters = $tools->GetJsApiParameters($order);
-		//获取共享收货地址js函数参数
-		$editAddress = $tools->GetEditAddressParameters();
-
-		$this->render('pay', array('jsApiParameters' => $jsApiParameters, 'editAddress' => $editAddress));
+		$this->render('pay', array('jsApiParameters' => $jsApiParameters));
 	}
 
 	public function notifyAction() {
