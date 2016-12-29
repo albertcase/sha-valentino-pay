@@ -18,7 +18,8 @@ var path = {
     template:['./src/*.html'],
     css:['./src/assets/css/*.css'],
     js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
-    homejs:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
+    welcomejs: ['./src/assets/js/lib/zepto.min.js',"./src/assets/js/lib/swiper.min.js",'./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/welcome.js'],
+    orderjs: ['./src/assets/js/lib/zepto.min.js','./src/assets/js/region.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/order.js'],
     images:['./src/assets/images/*'],
 };
 // Browser-sync
@@ -51,22 +52,32 @@ gulp.task('css',['clean'],function () {
 });
 
 // Concatenate & Minify
-gulp.task('scripts_home',['clean'], function() {
-    return gulp.src(path.homejs)
-        .pipe(concat('home_all.js'))
+gulp.task('scripts_welcome',['clean'], function() {
+    return gulp.src(path.welcomejs)
+        .pipe(concat('welcome_all.js'))
         .pipe(gulp.dest('./src/dist'))
-        .pipe(rename('home_all.min.js'))
+        .pipe(rename('welcome_all.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+gulp.task('scripts_order',['clean'], function() {
+    return gulp.src(path.orderjs)
+        .pipe(concat('order_all.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('order_all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
 
+
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
-    gulp.watch(path.homejs, ['scripts_home']);
+    gulp.watch(path.welcomejs, ['scripts_welcome']);
+    gulp.watch(path.orderjs, ['scripts_order']);
     gulp.watch(path.css,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'scripts_home','css','browser-sync']);
+gulp.task('default', ['watch', 'scripts_welcome','scripts_order','css','browser-sync']);
 
 
