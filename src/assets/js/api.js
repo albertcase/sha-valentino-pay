@@ -2,22 +2,22 @@
 Api = {
     //是否还有库存
     quota:function(callback){
-        //Common.msgBox('loading...');
-        //$.ajax({
-        //    url:'/api/quota',
-        //    type:'POST',
-        //    dataType:'json',
-        //    success:function(data){
-        //        $('.ajaxpop').remove();
-        //        return callback(data);
-        //        //status=1 有库存
-        //    }
-        //});
+        Common.msgBox('loading...');
+        $.ajax({
+            url:'/api/quota',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                $('.ajaxpop').remove();
+                return callback(data);
+                //status=1 有库存
+            }
+        });
 
-        return callback({
-            status:1,
-            msg:'success'
-        })
+        //return callback({
+        //    status:1,
+        //    msg:'success'
+        //})
 
 
     },
@@ -26,21 +26,21 @@ Api = {
     //sex  name  mobile email province city address
     order:function(obj,callback){
         Common.msgBox('loading...');
-        //$.ajax({
-        //    url:'/api/order',
-        //    type:'POST',
-        //    dataType:'json',
-        //    data:obj,
-        //    success:function(data){
-        //        $('.ajaxpop').remove();
-        //        return callback(data);
-        //    }
-        //});
+        $.ajax({
+            url:'/api/order',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                $('.ajaxpop').remove();
+                return callback(data);
+            }
+        });
 
-        return callback({
-            status:1,
-            msg:'success'
-        })
+        //return callback({
+        //    status:1,
+        //    msg:'success'
+        //})
 
 
     },
