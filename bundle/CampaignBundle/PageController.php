@@ -27,6 +27,8 @@ class PageController extends Controller {
     }
 
 	public function payAction() {
+    	global $user;
+
 		require_once VENDOR_ROOT."/lib/WxPay.Api.php";
 		require_once VENDOR_ROOT."/lib/WxPay.JsApiPay.php";
 		//查询用户订单
