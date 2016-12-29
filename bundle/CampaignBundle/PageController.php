@@ -69,7 +69,7 @@ class PageController extends Controller {
 		$xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 
 		$databaseapi = new \Lib\DatabaseAPI();
-		$databaseapi->insertWxpayLog($xml);
+		$databaseapi->insertWxpayLog($data, $xml);
 		if ($xml->return_code == 'SUCCESS' && $xml->result_code == 'SUCCESS') {
 			if ($databaseapi->checkStatus($xml->out_trade_no)) {
 				$databaseapi->updateStatus($xml->out_trade_no);
