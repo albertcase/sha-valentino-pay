@@ -51,7 +51,7 @@ class PageController extends Controller {
 		$input->SetBody("红色SPIKE铆钉链条包");
 		$input->SetAttach("红色SPIKE铆钉链条包");
 		$input->SetOut_trade_no($rs->orderid);
-		$input->SetTotal_fee("1100000");
+		$input->SetTotal_fee("1");
 		$input->SetTime_start($rs->start);
 		$input->SetTime_expire($rs->expire);
 		$input->SetGoods_tag("红色SPIKE铆钉链条包");
