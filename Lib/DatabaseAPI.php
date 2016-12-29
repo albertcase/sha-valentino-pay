@@ -111,7 +111,7 @@ class DatabaseAPI {
 	/**
 	 * 
 	 */
-	public function insertWxpayLog($xml){
+	public function insertWxpayLog($data, $xml){
 		$sql = "INSERT INTO `wxpay_log` SET `data` = ?, `appid` = ?, `attach` = ?, `bank_type` = ?, `cash_fee` = ?,
 			`fee_type` = ?, `is_subscribe` = ?, `mch_id` = ?, `nonce_str` = ?, `openid` = ?, `out_trade_no` = ?,
 			`result_code` = ?, `return_code` = ?, `sign` = ?, `time_end` = ?, `total_fee` = ?, `trade_type` = ?,
