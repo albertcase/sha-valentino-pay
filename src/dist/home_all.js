@@ -198,10 +198,13 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/seasonalgreeting';
+			window.location.href = '/welcome';
 		},
-		goGiftPage:function(){
-			window.location.href = '/seasonalgreeting/card.html';
+		goOrderPage:function(){
+			window.location.href = '/order';
+		},
+		goPayPage:function(){
+			window.location.href = '/pay';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -500,47 +503,62 @@ $(document).ready(function(){
 
 /*All the api collection*/
 Api = {
-    //保存贺卡
-    //fromname  toname message
-//{"status":1,"msg":id}
-    saveCard:function(obj,callback){
+    //是否还有库存
+    quota:function(callback){
         Common.msgBox('loading...');
         $.ajax({
-            url:'/ajax/api/card',
+            url:'/api/quota',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                $('.ajaxpop').remove();
+                return callback(data);
+                //status=1 有库存
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'success'
+        //})
+
+
+    },
+
+    //保存用户订单信息
+    //sex  name  mobile email province city address
+    order:function(obj,callback){
+        Common.msgBox('loading...');
+        $.ajax({
+            url:'/api/order',
             type:'POST',
             dataType:'json',
             data:obj,
             success:function(data){
                 $('.ajaxpop').remove();
                 return callback(data);
-                //code=1    msg = 贺卡id
             }
         });
 
         //return callback({
         //    status:1,
-        //    msg:'2'
+        //    msg:'success'
         //})
 
 
     },
-    //查询贺卡
-    //参数  id
-
-    getLetter:function(obj,callback){
+    //预约到店
+    //sex  name  mobile  province city store month day time
+    reservation:function(obj,callback){
         Common.msgBox('获取信息中...');
         $.ajax({
-            url:'/ajax/api/getcard',
+            url:'/api/submit',
             type:'GET',
             dataType:'json',
             data:obj,
             success:function(data){
                 $('.ajaxpop').remove();
                 return callback(data);
-                //data:gift
-                //gift=1抽过
-                //gift = 0,没抽过
-                //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
         });
     },
@@ -551,7 +569,15 @@ Api = {
 ;(function(){
 
     var controller = function(){
-
+        this.orderInfo = {
+            sex:'',
+            name:'',
+            mobile:'',
+            email:'',
+            province:'',
+            city:'',
+            address:'',
+        };
     };
     //init
     controller.prototype.init = function(){
@@ -581,7 +607,8 @@ Api = {
         //self.welcomePage();
         //self.validateForm();
 
-        self.orderForm();
+        //self.orderForm();
+        self.verifyOrder();
 
 
     };
@@ -607,7 +634,17 @@ Api = {
         $('.btn-buy').on('touchstart',function(){
         //    select product
         //    product name, product price
-            self.orderForm();
+            Api.quota(function(data){
+                console.log(data);
+                if(data.status==1){
+                //    有库存，继续
+                    self.orderForm();
+                }else{
+                //    没有库存，更改按钮描述
+                    $('.btn-buy span').html('现已售罄');
+                }
+            });
+
         });
 
     };
@@ -622,9 +659,65 @@ Api = {
         $('#form-contact .btn-submit').on('touchstart', function(){
             if(self.validateForm()){
                 console.log('通过前端验证，可以提交');
+                //sex  name  mobile email province city address
+                var sex = document.getElementById('input-title').value,
+                    name = document.getElementById('input-name').value,
+                    mobile = document.getElementById('input-mobile').value,
+                    email = document.getElementById('input-mail').value,
+                    province = document.getElementById('input-province').value,
+                    city = document.getElementById('input-city').value,
+                    address = document.getElementById('input-address-details').value;
+                self.orderInfo = {
+                    sex:sex,
+                    name:name,
+                    mobile:mobile,
+                    email:email,
+                    province:province,
+                    city:city,
+                    address:address,
+                };
+                Api.order(self.orderInfo,function(data){
+                    if(data.status==1){
+                    //    提交成功，去订单确认页面
+                        self.verifyOrder();
+                    }else if(data.status==5){
+                        //库存已用完，跳转到已售罄页面
+                        Common.gotoPin(0); /*同时修改按钮的值*/
+                    }else{
+                        alert(data.msg);
+                    }
+                })
 
             }
         });
+
+    };
+
+    //确认订单
+    controller.prototype.verifyOrder = function(obj){
+        var self = this;
+        Common.gotoPin(2);
+        var orderInfo = self.orderInfo;
+        $('#order-name').html(orderInfo.name);
+        $('#order-phone').html(orderInfo.mobile);
+        $('#order-mail').html(orderInfo.email);
+        $('#order-address').html(orderInfo.province+orderInfo.city+orderInfo.address);
+
+        //返回编辑订单信息
+        $('.btn-back').on('touchstart',function(){
+            self.backToEdit();
+        });
+
+        //确认订单，开始支付请求
+        $('.btn-submit-order').on('touchstart',function(){
+
+        });
+
+    };
+    //返回修改
+    controller.prototype.backToEdit = function(obj){
+        var self = this;
+        Common.gotoPin(1);
 
     };
 
@@ -660,19 +753,20 @@ Api = {
             inputCity = document.getElementById('input-city'),
             inputDetailAddress = document.getElementById('input-address-details'),
             inputCheck = $('#input-receive');
-        if(!inputTitle.value){
-            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓');
+
+        if(!inputTitle.value || (inputTitle.value=="称谓") || (!inputName.value)){
+            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓并填写姓名');
             validate = false;
         }else{
             Common.errorMsg.remove(inputTitle.parentElement);
         };
 
-        if(!inputName.value){
-            Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
-            validate = false;
-        }else{
-            Common.errorMsg.remove(inputName.parentElement);
-        };
+        //if(!inputName.value){
+        //    Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
+        //    validate = false;
+        //}else{
+        //    Common.errorMsg.remove(inputName.parentElement);
+        //};
 
         if(!inputMobile.value){
             Common.errorMsg.add(inputMobile.parentElement,'手机号码不能为空');
@@ -707,24 +801,19 @@ Api = {
             Common.errorMsg.remove(inputDetailAddress.parentElement);
         };
 
-        if(!inputProvince.value){
+        if(!inputProvince.value || inputProvince.value=='省份'){
             Common.errorMsg.add(inputProvince.parentElement,'请选择省份');
             validate = false;
         }else{
-            if(inputProvince.value=='省份'){
-                Common.errorMsg.add(inputProvince.parentElement,'请选择省份');
-                validate = false;
-            }else{
-                Common.errorMsg.remove(inputProvince.parentElement);
-            }
+            Common.errorMsg.remove(inputProvince.parentElement);
         };
 
-        if(!inputCity.value){
-            Common.errorMsg.add(inputCity.parentElement,'请选择城市');
-            validate = false;
-        }else{
-            Common.errorMsg.remove(inputCity.parentElement);
-        };
+        //if(!inputCity.value){
+        //    Common.errorMsg.add(inputCity.parentElement,'请选择城市');
+        //    validate = false;
+        //}else{
+        //    Common.errorMsg.remove(inputCity.parentElement);
+        //};
 
 
         if(!inputCheck.is(':checked')){

@@ -6,10 +6,13 @@
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/seasonalgreeting';
+			window.location.href = '/welcome';
 		},
-		goGiftPage:function(){
-			window.location.href = '/seasonalgreeting/card.html';
+		goOrderPage:function(){
+			window.location.href = '/order';
+		},
+		goPayPage:function(){
+			window.location.href = '/pay';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

@@ -1,46 +1,61 @@
 /*All the api collection*/
 Api = {
-    //保存贺卡
-    //fromname  toname message
-//{"status":1,"msg":id}
-    saveCard:function(obj,callback){
+    //是否还有库存
+    quota:function(callback){
         Common.msgBox('loading...');
         $.ajax({
-            url:'/ajax/api/card',
+            url:'/api/quota',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                $('.ajaxpop').remove();
+                return callback(data);
+                //status=1 有库存
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'success'
+        //})
+
+
+    },
+
+    //保存用户订单信息
+    //sex  name  mobile email province city address
+    order:function(obj,callback){
+        Common.msgBox('loading...');
+        $.ajax({
+            url:'/api/order',
             type:'POST',
             dataType:'json',
             data:obj,
             success:function(data){
                 $('.ajaxpop').remove();
                 return callback(data);
-                //code=1    msg = 贺卡id
             }
         });
 
         //return callback({
         //    status:1,
-        //    msg:'2'
+        //    msg:'success'
         //})
 
 
     },
-    //查询贺卡
-    //参数  id
-
-    getLetter:function(obj,callback){
+    //预约到店
+    //sex  name  mobile  province city store month day time
+    reservation:function(obj,callback){
         Common.msgBox('获取信息中...');
         $.ajax({
-            url:'/ajax/api/getcard',
+            url:'/api/submit',
             type:'GET',
             dataType:'json',
             data:obj,
             success:function(data){
                 $('.ajaxpop').remove();
                 return callback(data);
-                //data:gift
-                //gift=1抽过
-                //gift = 0,没抽过
-                //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
         });
     },

@@ -14,70 +14,8 @@
     //init
     controller.prototype.init = function(){
         var self = this;
-        //    loading first
-        var baseurl = 'dist/images/';
-        //var imagesArray = [
-        //    baseurl+'logo.png',
-        //];
-        //var i = 0;
-        //new preLoader(imagesArray, {
-        //    onProgress: function(){
-        //        i++;
-        //        var progress = parseInt(i/imagesArray.length*100);
-        //        $('.preload .v-content').html('已加载'+progress+'%');
-        //    },
-        //    onComplete: function(){
-        //        //
-        //        //
-        //        $('.preload').remove();
-        //        $('.container').addClass('fade');
-        //
-        //
-        //    }
-        //});
+        self.orderForm();
 
-        //self.welcomePage();
-        //self.validateForm();
-
-        //self.orderForm();
-        self.verifyOrder();
-
-
-    };
-    //welcome page
-    controller.prototype.welcomePage = function(){
-        var self = this;
-        Common.gotoPin(0);
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            loop: true,
-
-            // If we need pagination
-            pagination: '.swiper-pagination',
-
-            // Navigation arrows
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-
-            // And if we need scrollbar
-            //scrollbar: '.swiper-scrollbar',
-        });
-
-        $('.btn-buy').on('touchstart',function(){
-        //    select product
-        //    product name, product price
-            Api.quota(function(data){
-                console.log(data);
-                if(data.status==1){
-                //    有库存，继续
-                    self.orderForm();
-                }else{
-                //    没有库存，更改按钮描述
-                    $('.btn-buy span').html('现已售罄');
-                }
-            });
-
-        });
 
     };
 
@@ -86,7 +24,7 @@
         var self = this;
         //init this page first
         self.initProvinceCity();
-        Common.gotoPin(1);
+        Common.gotoPin(0);
         //submit the form
         $('#form-contact .btn-submit').on('touchstart', function(){
             if(self.validateForm()){
@@ -110,11 +48,11 @@
                 };
                 Api.order(self.orderInfo,function(data){
                     if(data.status==1){
-                    //    提交成功，去订单确认页面
-                        self.verifyOrder();
+                        //    提交成功，去订单确认页面
+                        Common.goPayPage();
                     }else if(data.status==5){
                         //库存已用完，跳转到已售罄页面
-                        Common.gotoPin(0); /*同时修改按钮的值*/
+                        Common.goHomePage(); /*同时修改按钮的值*/
                     }else{
                         alert(data.msg);
                     }
@@ -123,55 +61,6 @@
             }
         });
 
-    };
-
-    //确认订单
-    controller.prototype.verifyOrder = function(obj){
-        var self = this;
-        Common.gotoPin(2);
-        var orderInfo = self.orderInfo;
-        $('#order-name').html(orderInfo.name);
-        $('#order-phone').html(orderInfo.mobile);
-        $('#order-mail').html(orderInfo.email);
-        $('#order-address').html(orderInfo.province+orderInfo.city+orderInfo.address);
-
-        //返回编辑订单信息
-        $('.btn-back').on('touchstart',function(){
-            self.backToEdit();
-        });
-
-        //确认订单，开始支付请求
-        $('.btn-submit-order').on('touchstart',function(){
-
-        });
-
-    };
-    //返回修改
-    controller.prototype.backToEdit = function(obj){
-        var self = this;
-        Common.gotoPin(1);
-
-    };
-
-    //update greeting card value
-    controller.prototype.updateFormValue = function(toUser,letterContent,fromUser,isDisabled){
-        var self = this;
-        var toUserEle = document.getElementById('input-name-1'),
-            letterEle = document.getElementById('l-content'),
-            fromUserEle = document.getElementById('input-name-2');
-        //update form value and disabled status
-        if(toUser==undefined || letterContent==undefined || fromUser==undefined){
-            return;
-        }
-        //update the value
-        toUserEle.value = toUser;
-        letterEle.value = letterContent;
-        fromUserEle.value = fromUser;
-
-        //update the disable status
-        toUserEle.disabled = isDisabled;
-        letterEle.disabled = isDisabled;
-        fromUserEle.disabled = isDisabled;
     };
 
     controller.prototype.validateForm = function(){
@@ -294,8 +183,8 @@
     //dom ready
     $(document).ready(function(){
 
-        var valentino = new controller();
-        valentino.init();
+        var orderPage = new controller();
+        orderPage.init();
 
 
     });

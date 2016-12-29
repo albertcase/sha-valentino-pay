@@ -36,11 +36,11 @@
         //    }
         //});
 
-        //self.welcomePage();
+        self.welcomePage();
         //self.validateForm();
 
         //self.orderForm();
-        self.verifyOrder();
+        //self.verifyOrder();
 
 
     };
@@ -64,15 +64,15 @@
         });
 
         $('.btn-buy').on('touchstart',function(){
-        //    select product
-        //    product name, product price
+            //    select product
+            //    product name, product price
             Api.quota(function(data){
                 console.log(data);
                 if(data.status==1){
-                //    有库存，继续
+                    //    有库存，继续
                     self.orderForm();
                 }else{
-                //    没有库存，更改按钮描述
+                    //    没有库存，更改按钮描述
                     $('.btn-buy span').html('现已售罄');
                 }
             });
@@ -110,7 +110,7 @@
                 };
                 Api.order(self.orderInfo,function(data){
                     if(data.status==1){
-                    //    提交成功，去订单确认页面
+                        //    提交成功，去订单确认页面
                         self.verifyOrder();
                     }else if(data.status==5){
                         //库存已用完，跳转到已售罄页面
