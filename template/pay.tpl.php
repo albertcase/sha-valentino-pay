@@ -20,7 +20,11 @@
     			<?php echo $jsApiParameters; ?>,
     			function(res){
     				WeixinJSBridge.log(res.err_msg);
-    				alert(res.err_code+res.err_desc+res.err_msg);
+//    				alert(res.err_code+res.err_desc+res.err_msg);
+					  if(res.err_msg == "get_brand_wcpay_request：ok" ) {
+						Common.gotoPin(1);
+
+					  }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
     			}
     		);
     	}
@@ -78,6 +82,16 @@
 				</div>
 			</div>
 			<div class="btn btn-submit-order" onclick="callpay()"><span>确认付款</span></div>
+		</div>
+		<div class="pin pin-2" id="pin-pay-success">
+			<div class="v-content">
+				<h3>订单成功</h3>
+				<p class="des">
+					感谢您的购买<br>
+					我们将尽快安排相关工作人员与您联络
+				</p>
+				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div
+			</div>
 		</div>
 
 	</div>
