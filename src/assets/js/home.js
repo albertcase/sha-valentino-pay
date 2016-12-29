@@ -1,7 +1,15 @@
 ;(function(){
 
     var controller = function(){
-
+        this.orderInfo = {
+            sex:'',
+            name:'',
+            mobile:'',
+            email:'',
+            province:'',
+            city:'',
+            address:'',
+        };
     };
     //init
     controller.prototype.init = function(){
@@ -28,10 +36,11 @@
         //    }
         //});
 
-        //self.welcomePage();
+        self.welcomePage();
         //self.validateForm();
 
-        self.orderForm();
+        //self.orderForm();
+        //self.verifyOrder();
 
 
     };
@@ -72,9 +81,57 @@
         $('#form-contact .btn-submit').on('touchstart', function(){
             if(self.validateForm()){
                 console.log('通过前端验证，可以提交');
+                //sex  name  mobile email province city address
+                var sex = document.getElementById('input-title').value,
+                    name = document.getElementById('input-name').value,
+                    mobile = document.getElementById('input-mobile').value,
+                    email = document.getElementById('input-mail').value,
+                    province = document.getElementById('input-province').value,
+                    city = document.getElementById('input-city').value,
+                    address = document.getElementById('input-address-details').value;
+                self.orderInfo = {
+                    sex:sex,
+                    name:name,
+                    mobile:mobile,
+                    email:email,
+                    province:province,
+                    city:city,
+                    address:address,
+                };
+                Api.order(self.orderInfo,function(data){
+                    if(data.status==1){
+                    //    提交成功，去订单确认页面
+                        self.verifyOrder();
+                    }else if(data.status==5){
+                        //库存已用完，跳转到已售罄页面
+                        Common.gotoPin(0); /*同时修改按钮的值*/
+                    }else{
+                        alert(data.msg);
+                    }
+                })
 
             }
         });
+
+    };
+
+    //确认订单
+    controller.prototype.verifyOrder = function(obj){
+        var self = this;
+        Common.gotoPin(2);
+        var orderInfo = self.orderInfo;
+        $('#order-name').html(orderInfo.name);
+        $('#order-phone').html(orderInfo.mobile);
+        $('#order-mail').html(orderInfo.email);
+        $('#order-address').html(orderInfo.province+orderInfo.city+orderInfo.address);
+        $('.btn-back').on('touchstart',function(){
+            self.backToEdit();
+        });
+    };
+    //返回修改
+    controller.prototype.backToEdit = function(obj){
+        var self = this;
+        Common.gotoPin(1);
 
     };
 
@@ -110,19 +167,20 @@
             inputCity = document.getElementById('input-city'),
             inputDetailAddress = document.getElementById('input-address-details'),
             inputCheck = $('#input-receive');
-        if(!inputTitle.value){
-            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓');
+
+        if(!inputTitle.value || (inputTitle.value=="称谓") || (!inputName.value)){
+            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓并填写姓名');
             validate = false;
         }else{
             Common.errorMsg.remove(inputTitle.parentElement);
         };
 
-        if(!inputName.value){
-            Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
-            validate = false;
-        }else{
-            Common.errorMsg.remove(inputName.parentElement);
-        };
+        //if(!inputName.value){
+        //    Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
+        //    validate = false;
+        //}else{
+        //    Common.errorMsg.remove(inputName.parentElement);
+        //};
 
         if(!inputMobile.value){
             Common.errorMsg.add(inputMobile.parentElement,'手机号码不能为空');
@@ -157,24 +215,19 @@
             Common.errorMsg.remove(inputDetailAddress.parentElement);
         };
 
-        if(!inputProvince.value){
+        if(!inputProvince.value || inputProvince.value=='省份'){
             Common.errorMsg.add(inputProvince.parentElement,'请选择省份');
             validate = false;
         }else{
-            if(inputProvince.value=='省份'){
-                Common.errorMsg.add(inputProvince.parentElement,'请选择省份');
-                validate = false;
-            }else{
-                Common.errorMsg.remove(inputProvince.parentElement);
-            }
+            Common.errorMsg.remove(inputProvince.parentElement);
         };
 
-        if(!inputCity.value){
-            Common.errorMsg.add(inputCity.parentElement,'请选择城市');
-            validate = false;
-        }else{
-            Common.errorMsg.remove(inputCity.parentElement);
-        };
+        //if(!inputCity.value){
+        //    Common.errorMsg.add(inputCity.parentElement,'请选择城市');
+        //    validate = false;
+        //}else{
+        //    Common.errorMsg.remove(inputCity.parentElement);
+        //};
 
 
         if(!inputCheck.is(':checked')){
