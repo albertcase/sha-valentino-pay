@@ -70,7 +70,7 @@ class ApiController extends Controller {
 		$data->address = $request->request->get('address');
 		$data->orderid = APPMCHID.date("YmdHis");
 		$data->start = date("YmdHis");
-		$data->expire = date("YmdHis", time() + 600);
+		$data->expire = date("YmdHis", time() + 300);
 
 		$redis = new \Lib\RedisAPI();
     	$quota = $redis->quotaload();
