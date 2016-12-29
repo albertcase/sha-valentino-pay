@@ -10,12 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<link rel="stylesheet" type="text/css" href="/src/dist/css/style.css" />
 	<script type="text/javascript" src="http://valentinowechat.samesamechina.com/api/v1/js/60c4349e-c302-4313-9fa8-37a8ebd59853/wechat"></script>
-	<script type="text/javascript" src="/src/assets/js/lib/zepto.min.js"></script>
-	<script type="text/javascript" src="/src/assets/js/rem.js"></script>
-	<script type="text/javascript" src="/src/assets/js/common.js"></script>
-	<script type="text/javascript" src="/src/assets/js/wxshare.js"></script>
-	<script type="text/javascript" src="/src/assets/js/api.js"></script>
-	<script type="text/javascript" src="/src/assets/js/pay.js"></script>
+	<script type="text/javascript" src="/src/dist/js/pay_all.min.js"></script>
 </head>
 <body class="page-home">
 <div class="wrapper">

@@ -20,6 +20,7 @@ var path = {
     js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
     welcomejs: ['./src/assets/js/lib/zepto.min.js',"./src/assets/js/lib/swiper.min.js",'./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/welcome.js'],
     orderjs: ['./src/assets/js/lib/zepto.min.js','./src/assets/js/region.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/order.js'],
+    payjs: ['./src/assets/js/lib/zepto.min.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/pay.js'],
     images:['./src/assets/images/*'],
 };
 // Browser-sync
@@ -68,16 +69,26 @@ gulp.task('scripts_order',['clean'], function() {
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
+gulp.task('scripts_pay',['clean'], function() {
+    return gulp.src(path.payjs)
+        .pipe(concat('pay_all.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('pay_all.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+
 
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
     gulp.watch(path.welcomejs, ['scripts_welcome']);
     gulp.watch(path.orderjs, ['scripts_order']);
+    gulp.watch(path.payjs, ['scripts_pay']);
     gulp.watch(path.css,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'scripts_welcome','scripts_order','css','browser-sync']);
+gulp.task('default', ['watch', 'scripts_welcome','scripts_order','scripts_pay','css','browser-sync']);
 
 
