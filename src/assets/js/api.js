@@ -1,5 +1,27 @@
 /*All the api collection*/
 Api = {
+    //是否还有库存
+    quota:function(callback){
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/quota',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.ajaxpop').remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
+
+        return callback({
+            status:1,
+            msg:'success'
+        })
+
+
+    },
+
     //保存用户订单信息
     //sex  name  mobile email province city address
     order:function(obj,callback){
@@ -12,7 +34,6 @@ Api = {
         //    success:function(data){
         //        $('.ajaxpop').remove();
         //        return callback(data);
-        //        //code=1    msg = 贺卡id
         //    }
         //});
 

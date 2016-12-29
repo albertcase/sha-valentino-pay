@@ -198,10 +198,13 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/seasonalgreeting';
+			window.location.href = '/welcome';
 		},
-		goGiftPage:function(){
-			window.location.href = '/seasonalgreeting/card.html';
+		goOrderPage:function(){
+			window.location.href = '/order';
+		},
+		goPayPage:function(){
+			window.location.href = '/pay';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -500,6 +503,28 @@ $(document).ready(function(){
 
 /*All the api collection*/
 Api = {
+    //是否还有库存
+    quota:function(callback){
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/quota',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.ajaxpop').remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
+
+        return callback({
+            status:1,
+            msg:'success'
+        })
+
+
+    },
+
     //保存用户订单信息
     //sex  name  mobile email province city address
     order:function(obj,callback){
@@ -512,7 +537,6 @@ Api = {
         //    success:function(data){
         //        $('.ajaxpop').remove();
         //        return callback(data);
-        //        //code=1    msg = 贺卡id
         //    }
         //});
 
@@ -580,11 +604,11 @@ Api = {
         //    }
         //});
 
-        self.welcomePage();
+        //self.welcomePage();
         //self.validateForm();
 
         //self.orderForm();
-        //self.verifyOrder();
+        self.verifyOrder();
 
 
     };
@@ -610,7 +634,17 @@ Api = {
         $('.btn-buy').on('touchstart',function(){
         //    select product
         //    product name, product price
-            self.orderForm();
+            Api.quota(function(data){
+                console.log(data);
+                if(data.status==1){
+                //    有库存，继续
+                    self.orderForm();
+                }else{
+                //    没有库存，更改按钮描述
+                    $('.btn-buy span').html('现已售罄');
+                }
+            });
+
         });
 
     };
@@ -668,9 +702,17 @@ Api = {
         $('#order-phone').html(orderInfo.mobile);
         $('#order-mail').html(orderInfo.email);
         $('#order-address').html(orderInfo.province+orderInfo.city+orderInfo.address);
+
+        //返回编辑订单信息
         $('.btn-back').on('touchstart',function(){
             self.backToEdit();
         });
+
+        //确认订单，开始支付请求
+        $('.btn-submit-order').on('touchstart',function(){
+
+        });
+
     };
     //返回修改
     controller.prototype.backToEdit = function(obj){
