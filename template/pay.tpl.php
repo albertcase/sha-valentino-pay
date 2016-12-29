@@ -11,6 +11,34 @@
 	<link rel="stylesheet" type="text/css" href="/src/dist/css/style.css" />
 	<script type="text/javascript" src="http://valentinowechat.samesamechina.com/api/v1/js/60c4349e-c302-4313-9fa8-37a8ebd59853/wechat"></script>
 	<script type="text/javascript" src="/src/dist/js/pay_all.min.js"></script>
+	 <script type="text/javascript">
+    	//调用微信JS api 支付
+    	function jsApiCall()
+    	{
+    		WeixinJSBridge.invoke(
+    			'getBrandWCPayRequest',
+    			<?php echo $jsApiParameters; ?>,
+    			function(res){
+    				WeixinJSBridge.log(res.err_msg);
+    				alert(res.err_code+res.err_desc+res.err_msg);
+    			}
+    		);
+    	}
+
+    	function callpay()
+    	{
+    		if (typeof WeixinJSBridge == "undefined"){
+    		    if( document.addEventListener ){
+    		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+    		    }else if (document.attachEvent){
+    		        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+    		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+    		    }
+    		}else{
+    		    jsApiCall();
+    		}
+    	}
+    </script>
 </head>
 <body class="page-home">
 <div class="wrapper">
@@ -49,7 +77,7 @@
 					<span class="address" id="order-address"><?php print $info->province;?> <?php print $info->city;?> <?php print $info->address;?></span>
 				</div>
 			</div>
-			<div class="btn btn-submit-order"><span>确认付款</span></div>
+			<div class="btn btn-submit-order" onclick="callpay()"><span>确认付款</span></div>
 		</div>
 
 	</div>
