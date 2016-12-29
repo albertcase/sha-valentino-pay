@@ -12,6 +12,9 @@
     controller.prototype.verifyOrder = function(obj){
         var self = this;
         Common.gotoPin(0);
+        $('.btn-back').on('touchstart',function(){
+            Common.goHomePage();
+        });
         //var orderInfo = self.orderInfo;
         //$('#order-name').html(orderInfo.name);
         //$('#order-phone').html(orderInfo.mobile);
