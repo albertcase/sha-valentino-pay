@@ -59,9 +59,16 @@ class PageController extends Controller {
 	}
 
 	public function notifyAction() {
-		$data = $GLOBALS['HTTP_RAW_POST_DATA'];	
+		$data = $GLOBALS['HTTP_RAW_POST_DATA'];
+		$xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+
 		$databaseapi = new \Lib\DatabaseAPI();
-		$databaseapi->insertWxpayLog($data);
+		$databaseapi->insertWxpayLog($xml);
+		if ($xml->return_code == 'SUCCESS' && $xml->result_code == 'SUCCESS') {
+			if ($databaseapi->checkStatus($xml->out_trade_no)) {
+				$databaseapi->updateStatus($xml->out_trade_no);
+			}
+		}
 		exit;
 	}
 

@@ -111,8 +111,7 @@ class DatabaseAPI {
 	/**
 	 * 
 	 */
-	public function insertWxpayLog($data){
-		$xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+	public function insertWxpayLog($xml){
 		$sql = "INSERT INTO `wxpay_log` SET `data` = ?, `appid` = ?, `attach` = ?, `bank_type` = ?, `cash_fee` = ?,
 			`fee_type` = ?, `is_subscribe` = ?, `mch_id` = ?, `nonce_str` = ?, `openid` = ?, `out_trade_no` = ?,
 			`result_code` = ?, `return_code` = ?, `sign` = ?, `time_end` = ?, `total_fee` = ?, `trade_type` = ?,
@@ -170,6 +169,31 @@ class DatabaseAPI {
 			return $data;
 		}
 		return NULL;
+	}
+
+	public function checkStatus($orderid) {
+		$sql = "SELECT `status` FROM `order` WHERE `orderid`=?";
+		$res = $this->connect()->prepare($sql);
+		$res->bind_param("s", $orderid);
+		$res->execute();
+		$res->bind_result($status);
+		if($res->fetch()) {
+			if($status==0){
+				return TRUE;
+			}
+			return FALSE;
+		}
+		return FALSE;
+	}
+
+	public function updateStatus($orderid) {
+		$sql = "UPDATE `order` SET `status`=1 WHERE `orderid`=?";
+		$res = $this->connect()->prepare($sql);
+		$res->bind_param("s", $orderid);
+		if($res->execute()) 
+			return TRUE;
+		else 
+			return FALSE;
 	}
 
 }
