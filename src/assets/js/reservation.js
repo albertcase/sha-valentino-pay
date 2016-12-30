@@ -6,15 +6,11 @@
     controller.prototype.init = function(){
         var self = this;
         self.orderForm();
-
-
     };
 
     //fill the order information
     controller.prototype.orderForm = function(){
         var self = this;
-        //init this page first
-        self.initProvinceCity();
         Common.gotoPin(0);
         //submit the reservation
         $('#form-contact .btn-submit').on('touchstart', function(){
@@ -84,7 +80,7 @@
             Common.errorMsg.add(inputMail.parentElement,'邮箱不能为空');
             validate = false;
         }else{
-            var regMail=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            var regMail=/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
             if(!(regMail.test(inputMail.value))){
                 validate = false;
                 Common.errorMsg.add(inputMail.parentElement,'邮箱格式错误，请重新输入');
@@ -106,33 +102,6 @@
             return true;
         }
         return false;
-    };
-
-    //init province and city
-    controller.prototype.initProvinceCity = function(){
-        var self = this;
-        var regionAll = region;
-        var provinceEle = $('#input-province');
-        var cityEle = $('#input-city');
-        var provinceHtml = '';
-
-        for(var i=0;i<regionAll.length;i++){
-            provinceHtml = provinceHtml+'<option data-id="'+i+'" value="'+regionAll[i].name+'">'+regionAll[i].name+'</option>';
-        }
-        provinceEle.html(provinceHtml);
-        cityEle.html('<option value="'+regionAll[0].sub[0]+'">'+regionAll[0].sub[0]+'</option>');
-
-        provinceEle.on('change',function(){
-            var e = document.getElementById("input-province");
-            var curIndex = e.selectedIndex;
-            var cityHtml = '';
-            for(var j=0;j<regionAll[curIndex].sub.length;j++){
-                cityHtml = cityHtml + '<option value="'+regionAll[curIndex].sub[j]+'">'+regionAll[curIndex].sub[j]+'</option>';
-            }
-            cityEle.html(cityHtml);
-        });
-
-
     };
 
 
