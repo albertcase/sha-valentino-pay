@@ -1694,6 +1694,10 @@ html, body {
 .order-block .order-item label {
   color: rgba(255, 255, 255, 0.8);
 }
+.order-block .order-item-phone a {
+  color: #fff;
+  text-decoration: none;
+}
 
 .btn-submit-order {
   margin-top: 1.2rem;
