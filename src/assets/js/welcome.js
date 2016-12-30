@@ -26,7 +26,7 @@
             //scrollbar: '.swiper-scrollbar',
         });
 
-        $('.btn-buy').on('touchstart',function(){
+        $('.btn-buy').on('click',function(){
             _hmt.push(['_trackEvent', 'buttons', 'click', '即刻购买']);
             //    select product
             //    product name, product price
