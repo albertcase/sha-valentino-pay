@@ -30,15 +30,12 @@
                 };
                 Api.reservation(orderInfo,function(data){
                     console.log(data);
-                    //if(data.status==1){
-                    //    //    提交成功，去订单确认页面
-                    //    self.verifyOrder();
-                    //}else if(data.status==5){
-                    //    //库存已用完，跳转到已售罄页面
-                    //    Common.gotoPin(0); /*同时修改按钮的值*/
-                    //}else{
-                    //    alert(data.msg);
-                    //}
+                    if(data.status==1){
+                        //    提交成功，去提示预约成功页面
+                        Common.gotoPin(1);
+                    }else{
+                        alert(data.msg);
+                    }
                 })
 
             }

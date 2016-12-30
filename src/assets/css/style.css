@@ -1729,10 +1729,16 @@ html, body {
 }
 #pin-pay-success h3 {
   font-size: 0.34rem;
+  margin-bottom: 1rem;
 }
 #pin-pay-success .des {
-  margin-top: 1rem;
   font-size: 0.28rem;
+}
+
+.btn-go span {
+  letter-spacing: 0;
+  padding: 0.2rem 0.5rem;
+  margin-top: 1.3rem;
 }
 
 #pin-reservation .title {
