@@ -1739,12 +1739,12 @@ html, body {
 }
 #pin-pay-success .des {
   font-size: 0.28rem;
+  margin-bottom: 1.3rem;
 }
 
 .btn-go span {
   letter-spacing: 0;
   padding: 0.2rem 0.5rem;
-  margin-top: 1.3rem;
 }
 
 #pin-reservation .title {
