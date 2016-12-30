@@ -404,7 +404,6 @@ Api = {
             //    select product
             //    product name, product price
             Api.quota(function(data){
-                console.log(data);
                 if(data.status==1){
                     //    有库存，去订单页面
                     Common.goOrderPage();
