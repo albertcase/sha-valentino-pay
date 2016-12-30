@@ -1050,6 +1050,7 @@ Api = {
         Common.gotoPin(0);
         //submit the form
         $('#form-contact .btn-submit').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', '订单信息提交']);
             if(self.validateForm()){
                 console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address

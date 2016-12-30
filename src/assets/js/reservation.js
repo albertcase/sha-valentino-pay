@@ -14,8 +14,9 @@
         Common.gotoPin(0);
         //submit the reservation
         $('#form-contact .btn-submit').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'btn', 'click', '预约完成']);
             if(self.validateForm()){
-                console.log('通过前端验证，可以提交');
+                //console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
                 var sex = document.getElementById('input-title').value,
                     name = document.getElementById('input-name').value,
@@ -39,6 +40,10 @@
                 })
 
             }
+        });
+
+        $('#pin-pay-success .btn').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'link', 'click', '探索ROSSO VALENTINO系列']);
         });
 
     };

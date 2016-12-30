@@ -27,6 +27,7 @@
         });
 
         $('.btn-buy').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', '即刻购买']);
             //    select product
             //    product name, product price
             Api.quota(function(data){
@@ -35,10 +36,15 @@
                     Common.goOrderPage();
                 }else{
                     //    没有库存，更改按钮描述
+                    _hmt.push(['_trackEvent', 'buttons', 'click', '现已售罄']);
                     $('.btn-buy span').html('现已售罄');
                 }
             });
 
+        });
+
+        $('.gorosso').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'link', 'click', '探索ROSSO VALENTINO系列']);
         });
 
     };
