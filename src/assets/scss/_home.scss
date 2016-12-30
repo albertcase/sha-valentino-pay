@@ -91,7 +91,7 @@ html,body{
 #swiper-products{
   position: relative;
   .swiper-container {
-    width: 5rem;
+    width: 5.73rem;
     //height: 300px;
   };
   .swiper-button-next,
@@ -127,12 +127,9 @@ html,body{
   .swiper-pagination-bullet-active{
     background: #ef4041;
   }
-  .product-name{
-    margin-bottom: 0.2rem;
-    font-size: 0.28rem;
-  }
-  .product-price{
-    font-size: 0.3rem;
+  .product-des{
+    @include size(2.71rem,0.79rem);
+    margin:0 auto;
   }
 }
 

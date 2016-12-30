@@ -61,7 +61,7 @@
 						</div>
 						<div class="input-box input-checkbox">
 							<input type="checkbox" name="receive" id="input-receive" checked/>
-							<label for="input-receive">我已阅读并接受<a href="http://www.baidu.com">隐私政策</a></label>
+							<label for="input-receive">我已阅读并接受<a href="http://www.valentino.cn/cms/legal/privacypolicy.asp?tskay=5A81B803">隐私政策</a></label>
 						</div>
 					</div>
 					<div class="btn btn-submit"><span>提交</span></div>

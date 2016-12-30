@@ -1539,7 +1539,7 @@ html, body {
   position: relative;
 }
 #swiper-products .swiper-container {
-  width: 5rem;
+  width: 5.73rem;
 }
 #swiper-products .swiper-button-next,
 #swiper-products .swiper-button-prev {
@@ -1583,12 +1583,10 @@ html, body {
 .product-wrap .swiper-pagination-bullet-active {
   background: #ef4041;
 }
-.product-wrap .product-name {
-  margin-bottom: 0.2rem;
-  font-size: 0.28rem;
-}
-.product-wrap .product-price {
-  font-size: 0.3rem;
+.product-wrap .product-des {
+  width: 2.71rem;
+  height: 0.79rem;
+  margin: 0 auto;
 }
 
 .pin-2 {
