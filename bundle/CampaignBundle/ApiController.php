@@ -68,7 +68,7 @@ class ApiController extends Controller {
 		$data->province = $request->request->get('province');
 		$data->city = $request->request->get('city');
 		$data->address = $request->request->get('address');
-		$data->orderid = APPMCHID.date("YmdHis");
+		$data->orderid = substr(md5(uniqid(mt_rand(), true)), 0,5);
 		$data->start = date("YmdHis");
 		$data->expire = date("YmdHis", time() + 300);
 
