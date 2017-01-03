@@ -184,8 +184,8 @@ class ApiController extends Controller {
 
 	public function flushAction() {
 		$redis = new \Lib\RedisAPI();
-    	//$redis->flush();
-    	echo $redis->quotacheck(4);
+    	$redis->flush();
+    	//echo $redis->quotacheck(4);
     	exit;
 	}
 
