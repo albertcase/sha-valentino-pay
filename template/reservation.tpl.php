@@ -40,6 +40,7 @@
 									<option value="">称谓</option>
 									<option value="先生">先生</option>
 									<option value="女士">女士</option>
+									<option value="小姐">女士</option>
 								</select>
 							</div>
 							<div class="input-box-content input-box-content-name">
