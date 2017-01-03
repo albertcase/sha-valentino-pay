@@ -12,9 +12,9 @@ define("WECHAT_VENDOR", 'default'); // default | curio
 
 //Wechat config info
 define("TOKEN", '?????');
-define("APPID", 'wx4868f82730292835');
-define("APPSECRET", 'b994d3233e85e53712189f21880b83e3');
-define("APPMCHID", '1323397001');
+define("APPID", 'wx9e85e362024e0a42');
+define("APPSECRET", '06b4a6abdc7da802290c4ff5116a6d80');
+define("APPMCHID", '1339055101');
 define("APPKEY", '0e861438632e4359929e9dcc143acd47');
 define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '100');
