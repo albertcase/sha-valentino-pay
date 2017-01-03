@@ -67,6 +67,13 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+.clearfix:after{
+  content: '.';
+  display: block;
+  @include size(0,0);
+  overflow: hidden;
+  clear: both;
+}
 img{
   width: 100%;
   display: block;

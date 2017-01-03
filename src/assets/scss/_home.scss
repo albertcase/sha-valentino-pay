@@ -28,6 +28,7 @@ html,body{
   }
 }
 
+
 .title{
   font-size: 0.24rem;
   text-align: center;
@@ -184,7 +185,21 @@ html,body{
 
 #form-contact{
   .input-box{
+    position: relative;
     margin-bottom: 0.3rem;
+  }
+  .input-box-content{
+    position: relative;
+  }
+  .error{
+    position: absolute;
+    font-size: 0.22rem;
+    text-indent: -999em;
+    @include size(0.4rem,0.4rem);
+    background: url('../../images/icon-forbidden.png') no-repeat;
+    background-size: 100%;
+    right: 0.2rem;
+    bottom: 0.2rem;
   }
   input[type="text"],
   input[type="tel"],select{
@@ -196,33 +211,40 @@ html,body{
     border-radius: 0;
     border: none;
     box-sizing: border-box;
+    width: 100%;
     -webkit-appearance:none;
   }
   select{
     //padding: 1rem;
     //height: 1rem;
+    width: 100%;
+    box-sizing: border-box;
     background: #fff url('../../images/polygon-down.png')  calc(100% - 10px) center no-repeat;
     background-size: 0.13rem;
   }
-  .input-box-mobile input[type="tel"],
-  .input-box-mail input[type="text"],
-  .input-box-address-details input[type="text"]{
-    width: 100%;
-    box-sizing: border-box;
-  }
-  #input-title{
+  //.input-box-mobile input[type="tel"],
+  //.input-box-mail input[type="text"],
+  //.input-box-address-details input[type="text"]{
+  //  width: 100%;
+  //  box-sizing: border-box;
+  //}
+  .input-box-content-title{
+    float: left;
     width: 32%;
     text-align: center;
   }
-  #input-name{
+  .input-box-content-name{
     width: 60%;
     float: right;
   }
-  #input-province,
-  #input-city{
+  .input-box-content-province,
+  .input-box-content-city{
     width: 46%;
   }
-  #input-city{
+  .input-box-content-province{
+    float: left;
+  }
+  .input-box-content-city{
     float: right;
   }
   .input-checkbox{

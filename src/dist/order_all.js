@@ -1048,11 +1048,25 @@ Api = {
         //init this page first
         self.initProvinceCity();
         Common.gotoPin(0);
+
+        $('#form-contact input').on('keyup',function(){
+            self.validateForm();
+        });
+
+        $('#form-contact select').on('change',function(){
+            self.validateForm();
+        });
+
+
         //submit the form
         $('#form-contact .btn-submit').on('touchstart', function(){
             _hmt.push(['_trackEvent', 'buttons', 'click', '订单信息提交']);
             if(self.validateForm()){
-                console.log('通过前端验证，可以提交');
+                if(!$('#input-receive').is(':checked')){
+                    alert('请接受隐私条款方能提交');
+                    return;
+                }
+                //console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
                 var sex = document.getElementById('input-title').value,
                     name = document.getElementById('input-name').value,
@@ -1099,19 +1113,19 @@ Api = {
             inputDetailAddress = document.getElementById('input-address-details'),
             inputCheck = $('#input-receive');
 
-        if(!inputTitle.value || (inputTitle.value=="称谓") || (!inputName.value)){
-            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓并填写姓名');
+        if(!inputTitle.value || (inputTitle.value=="称谓")){
+            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓');
             validate = false;
         }else{
             Common.errorMsg.remove(inputTitle.parentElement);
         };
 
-        //if(!inputName.value){
-        //    Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
-        //    validate = false;
-        //}else{
-        //    Common.errorMsg.remove(inputName.parentElement);
-        //};
+        if(!inputName.value){
+            Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
+            validate = false;
+        }else{
+            Common.errorMsg.remove(inputName.parentElement);
+        };
 
         if(!inputMobile.value){
             Common.errorMsg.add(inputMobile.parentElement,'手机号码不能为空');
@@ -1161,12 +1175,12 @@ Api = {
         //};
 
 
-        if(!inputCheck.is(':checked')){
-            validate = false;
-            Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
-        }else{
-            Common.errorMsg.remove(inputCheck[0].parentElement);
-        }
+        //if(!inputCheck.is(':checked')){
+        //    validate = false;
+        //    Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
+        //}else{
+        //    Common.errorMsg.remove(inputCheck[0].parentElement);
+        //}
 
 
         if(validate){

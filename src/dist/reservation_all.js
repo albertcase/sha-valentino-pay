@@ -367,10 +367,21 @@ Api = {
     controller.prototype.orderForm = function(){
         var self = this;
         Common.gotoPin(0);
+        $('#form-contact input').on('keyup',function(){
+            self.validateForm();
+        });
+
+        $('#form-contact select').on('change',function(){
+            self.validateForm();
+        });
         //submit the reservation
-        $('#form-contact .btn-submit').on('touchstart', function(){
+        $('#form-contact .btn-submit span').on('touchstart', function(){
             _hmt.push(['_trackEvent', 'btn', 'click', '预约完成']);
             if(self.validateForm()){
+                if(!$('#input-receive').is(':checked')){
+                    alert('请接受隐私条款方能提交');
+                    return;
+                }
                 //console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
                 var sex = document.getElementById('input-title').value,
