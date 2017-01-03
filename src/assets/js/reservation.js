@@ -30,7 +30,6 @@
                     email:email
                 };
                 Api.reservation(orderInfo,function(data){
-                    console.log(data);
                     if(data.status==1){
                         //    提交成功，去提示预约成功页面
                         Common.gotoPin(1);

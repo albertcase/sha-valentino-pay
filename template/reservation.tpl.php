@@ -60,7 +60,7 @@
 		<div class="pin pin-2" id="pin-pay-success">
 			<div class="v-content">
 				<p class="des">
-					感谢您的预约
+					感谢您的预约<br>
 					我们将尽快安排相关工作人员与您联络<br>
 				</p>
 				<div class="btn btn-go hide"><span>探索ROSSO VALENTINO系列</span></div
