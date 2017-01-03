@@ -68,11 +68,18 @@
             inputMail = document.getElementById('input-mail'),
             inputCheck = $('#input-receive');
 
-        if(!inputTitle.value || (inputTitle.value=="称谓") || (!inputName.value)){
-            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓并填写姓名');
+        if(!inputTitle.value || (inputTitle.value=="称谓")){
+            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓');
             validate = false;
         }else{
             Common.errorMsg.remove(inputTitle.parentElement);
+        };
+
+        if(!inputName.value){
+            Common.errorMsg.add(inputName.parentElement,'请填写姓名');
+            validate = false;
+        }else{
+            Common.errorMsg.remove(inputName.parentElement);
         };
 
         if(!inputMobile.value){
@@ -102,12 +109,12 @@
         }
 
 
-        if(!inputCheck.is(':checked')){
-            validate = false;
-            Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
-        }else{
-            Common.errorMsg.remove(inputCheck[0].parentElement);
-        }
+        //if(!inputCheck.is(':checked')){
+        //    validate = false;
+        //    Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
+        //}else{
+        //    Common.errorMsg.remove(inputCheck[0].parentElement);
+        //}
 
 
         if(validate){
