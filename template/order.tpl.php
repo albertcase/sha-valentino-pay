@@ -43,27 +43,36 @@
 				<form id="form-contact" class="">
 					<h3 class="title">请完善收货信息</h3>
 					<div class="form-information">
-						<div class="input-box input-box-title">
-							<select name="title" id="input-title">
-								<option value="">称谓</option>
-								<option value="先生">先生</option>
-								<option value="女士">女士</option>
-							</select>
-							<input type="text" id="input-name" placeholder="姓名"/>
+						<div class="input-box input-box-title clearfix">
+							<div class="input-box-content input-box-content-title">
+								<select name="title" id="input-title">
+									<option value="">称谓</option>
+									<option value="先生">先生</option>
+									<option value="女士">女士</option>
+									<option value="小姐">小姐</option>
+								</select>
+							</div>
+							<div class="input-box-content input-box-content-name">
+								<input type="text" id="input-name" placeholder="姓名"/>
+							</div>
 						</div>
-						<div class="input-box input-box-mobile">
+						<div class="input-box input-box-mobile ">
 							<input type="tel" maxlength="11" id="input-mobile" placeholder="联系电话"/>
 						</div>
 						<div class="input-box input-box-mail">
 							<input type="text" id="input-mail" placeholder="电子邮箱"/>
 						</div>
-						<div class="input-box input-box-address">
-							<select name="province" id="input-province">
-								<!--<option value="">省份</option>-->
-							</select>
-							<select name="city" id="input-city">
-								<!--<option value="">城市</option>-->
-							</select>
+						<div class="input-box input-box-address clearfix">
+							<div class="input-box-content input-box-content-province">
+								<select name="province" id="input-province">
+									<!--<option value="">省份</option>-->
+								</select>
+							</div>
+							<div class="input-box-content input-box-content-city">
+								<select name="city" id="input-city">
+									<!--<option value="">城市</option>-->
+								</select>
+							</div>
 						</div>
 						<div class="input-box input-box-address-details">
 							<input type="text" name="address-details" id="input-address-details" placeholder="具体地址"/>

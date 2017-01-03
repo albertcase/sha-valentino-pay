@@ -367,10 +367,21 @@ Api = {
     controller.prototype.orderForm = function(){
         var self = this;
         Common.gotoPin(0);
+        $('#form-contact input').on('keyup',function(){
+            self.validateForm();
+        });
+
+        $('#form-contact select').on('change',function(){
+            self.validateForm();
+        });
         //submit the reservation
-        $('#form-contact .btn-submit').on('touchstart', function(){
+        $('#form-contact .btn-submit span').on('touchstart', function(){
             _hmt.push(['_trackEvent', 'btn', 'click', '预约完成']);
             if(self.validateForm()){
+                if(!$('#input-receive').is(':checked')){
+                    alert('请接受隐私条款方能提交');
+                    return;
+                }
                 //console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
                 var sex = document.getElementById('input-title').value,
@@ -412,11 +423,18 @@ Api = {
             inputMail = document.getElementById('input-mail'),
             inputCheck = $('#input-receive');
 
-        if(!inputTitle.value || (inputTitle.value=="称谓") || (!inputName.value)){
-            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓并填写姓名');
+        if(!inputTitle.value || (inputTitle.value=="称谓")){
+            Common.errorMsg.add(inputTitle.parentElement,'请选择合适的称谓');
             validate = false;
         }else{
             Common.errorMsg.remove(inputTitle.parentElement);
+        };
+
+        if(!inputName.value){
+            Common.errorMsg.add(inputName.parentElement,'请填写姓名');
+            validate = false;
+        }else{
+            Common.errorMsg.remove(inputName.parentElement);
         };
 
         if(!inputMobile.value){
@@ -446,12 +464,12 @@ Api = {
         }
 
 
-        if(!inputCheck.is(':checked')){
-            validate = false;
-            Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
-        }else{
-            Common.errorMsg.remove(inputCheck[0].parentElement);
-        }
+        //if(!inputCheck.is(':checked')){
+        //    validate = false;
+        //    Common.errorMsg.add(inputCheck[0].parentElement,'请接受隐私条款');
+        //}else{
+        //    Common.errorMsg.remove(inputCheck[0].parentElement);
+        //}
 
 
         if(validate){

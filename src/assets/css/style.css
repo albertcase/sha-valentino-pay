@@ -640,6 +640,15 @@ body {
   user-select: none;
 }
 
+.clearfix:after {
+  content: '.';
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
 img {
   width: 100%;
   display: block;
@@ -1631,7 +1640,22 @@ html, body {
 }
 
 #form-contact .input-box {
+  position: relative;
   margin-bottom: 0.3rem;
+}
+#form-contact .input-box-content {
+  position: relative;
+}
+#form-contact .error {
+  position: absolute;
+  font-size: 0.22rem;
+  text-indent: -999em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: url("../../images/icon-forbidden.png") no-repeat;
+  background-size: 100%;
+  right: 0.2rem;
+  bottom: 0.2rem;
 }
 #form-contact input[type="text"],
 #form-contact input[type="tel"], #form-contact select {
@@ -1643,31 +1667,32 @@ html, body {
   border-radius: 0;
   border: none;
   box-sizing: border-box;
+  width: 100%;
   -webkit-appearance: none;
 }
 #form-contact select {
+  width: 100%;
+  box-sizing: border-box;
   background: #fff url("../../images/polygon-down.png") calc(100% - 10px) center no-repeat;
   background-size: 0.13rem;
 }
-#form-contact .input-box-mobile input[type="tel"],
-#form-contact .input-box-mail input[type="text"],
-#form-contact .input-box-address-details input[type="text"] {
-  width: 100%;
-  box-sizing: border-box;
-}
-#form-contact #input-title {
+#form-contact .input-box-content-title {
+  float: left;
   width: 32%;
   text-align: center;
 }
-#form-contact #input-name {
+#form-contact .input-box-content-name {
   width: 60%;
   float: right;
 }
-#form-contact #input-province,
-#form-contact #input-city {
+#form-contact .input-box-content-province,
+#form-contact .input-box-content-city {
   width: 46%;
 }
-#form-contact #input-city {
+#form-contact .input-box-content-province {
+  float: left;
+}
+#form-contact .input-box-content-city {
   float: right;
 }
 #form-contact .input-checkbox {

@@ -34,13 +34,18 @@
 						我们将尽快安排相关工作人员与您联络
 					</p>
 					<div class="form-information">
-						<div class="input-box input-box-title">
-							<select name="title" id="input-title">
-								<option value="">称谓</option>
-								<option value="先生">先生</option>
-								<option value="女士">女士</option>
-							</select>
-							<input type="text" id="input-name" placeholder="姓名"/>
+						<div class="input-box input-box-title clearfix">
+							<div class="input-box-content input-box-content-title">
+								<select name="title" id="input-title">
+									<option value="">称谓</option>
+									<option value="先生">先生</option>
+									<option value="女士">女士</option>
+									<option value="小姐">女士</option>
+								</select>
+							</div>
+							<div class="input-box-content input-box-content-name">
+								<input type="text" id="input-name" placeholder="姓名"/>
+							</div>
 						</div>
 						<div class="input-box input-box-mobile">
 							<input type="tel" maxlength="11" id="input-mobile" placeholder="联系电话"/>
