@@ -91,7 +91,7 @@ html,body{
 #swiper-products{
   position: relative;
   .swiper-container {
-    width: 5rem;
+    width: 7.5rem;
     //height: 300px;
   };
   .swiper-button-next,
@@ -127,12 +127,9 @@ html,body{
   .swiper-pagination-bullet-active{
     background: #ef4041;
   }
-  .product-name{
-    margin-bottom: 0.2rem;
-    font-size: 0.28rem;
-  }
-  .product-price{
-    font-size: 0.3rem;
+  .product-des{
+    @include size(2.71rem,0.79rem);
+    margin:0 auto;
   }
 }
 
@@ -178,6 +175,7 @@ html,body{
     letter-spacing: 0px;
     color: #fdc5cb;
     font-size: 0.24rem;
+    text-align: right;
     span{
       display: block;
     }
@@ -253,6 +251,13 @@ html,body{
       color: rgba(255,255,255,0.8);
     }
   }
+  .order-item-phone{
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+
+  }
 
 }
 .btn-submit-order{
@@ -277,5 +282,37 @@ html,body{
       background: url('../../images/arrow-left.png') no-repeat;
       background-size: 100%;
     }
+  }
+}
+
+#pin-pay-success{
+  text-align: center;
+  color: #ffafb0;
+  background: url('../../images/bg-3.jpg') bottom no-repeat;
+  background-size: 100%;
+  .v-content{
+    top: 45%;
+  }
+  h3{
+    font-size: 0.34rem;
+    margin-bottom: 1rem;
+  }
+  .des{
+    font-size: 0.28rem;
+    margin-bottom: 1.3rem;
+  }
+}
+.btn-go span{
+  letter-spacing: 0;
+  padding: 0.2rem 0.5rem;
+}
+
+//for pin-reservation
+#pin-reservation{
+  .title{
+    color: #ffafb0;
+    font-size: 0.28rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0px;
   }
 }

@@ -10,28 +10,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<link rel="stylesheet" type="text/css" href="/src/dist/css/style.css" />
 	<script type="text/javascript" src="http://valentinowechat.samesamechina.com/api/v1/js/60c4349e-c302-4313-9fa8-37a8ebd59853/wechat"></script>
-	<script type="text/javascript" src="/src/assets/js/lib/zepto.min.js"></script>
-	<script type="text/javascript" src="/src/assets/js/lib/pre-loader.js"></script>
-	<script type="text/javascript" src="/src/assets/js/lib/swiper.min.js"></script>
-	<script type="text/javascript" src="/src/assets/js/region.js"></script>
-	<script type="text/javascript" src="/src/assets/js/rem.js"></script>
-	<script type="text/javascript" src="/src/assets/js/common.js"></script>
-	<script type="text/javascript" src="/src/assets/js/wxshare.js"></script>
-	<script type="text/javascript" src="/src/assets/js/api.js"></script>
-	<script type="text/javascript" src="/src/assets/js/reservation.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?d7d1af7688a53ead0361f6fbfe4c00c8";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<script type="text/javascript" src="/src/dist/js/reservation_all.min.js"></script>
 </head>
 <body class="page-reservation">
 <div class="wrapper">
 	<div class="container animate">
 		<!--form page-->
-		<div class="pin pin-2">
+		<div class="pin pin-2" id="pin-reservation">
 			<div class="v-content">
 				<!-- 添加修改地址-->
 				<form id="form-contact" class="">
-					<h3 class="title">预约前往精品店，探索ROSSO VALENTINO系列<br>
+					<p class="title">预约前往精品店，探索ROSSO VALENTINO系列<br>
 						敬请填写您的联系方式<br>
 						我们将尽快安排相关工作人员与您联络
-					</h3>
+					</p>
 					<div class="form-information">
 						<div class="input-box input-box-title">
 							<select name="title" id="input-title">
@@ -49,11 +50,20 @@
 						</div>
 						<div class="input-box input-checkbox">
 							<input type="checkbox" name="receive" id="input-receive" checked/>
-							<label for="input-receive">我已阅读并接受<a href="http://www.baidu.com">隐私政策</a></label>
+							<label for="input-receive">我已阅读并接受<a href="http://www.valentino.cn/cms/legal/privacypolicy.asp?tskay=5A81B803">隐私政策</a></label>
 						</div>
 					</div>
 					<div class="btn btn-submit"><span>预约完成</span></div>
 				</form>
+			</div>
+		</div>
+		<div class="pin pin-2" id="pin-pay-success">
+			<div class="v-content">
+				<p class="des">
+					感谢您的预约
+					我们将尽快安排相关工作人员与您联络<br>
+				</p>
+				<div class="btn btn-go hide"><span>探索ROSSO VALENTINO系列</span></div
 			</div>
 		</div>
 

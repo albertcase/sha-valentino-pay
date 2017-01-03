@@ -13,8 +13,14 @@
         var self = this;
         Common.gotoPin(0);
         $('.btn-back').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', '返回修改']);
             Common.goHomePage();
         });
+
+        $('#pin-pay-success .btn').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'link', 'click', '探索ROSSO VALENTINO系列']);
+        });
+
         //var orderInfo = self.orderInfo;
         //$('#order-name').html(orderInfo.name);
         //$('#order-phone').html(orderInfo.mobile);

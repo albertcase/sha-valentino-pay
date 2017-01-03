@@ -10,6 +10,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<link rel="stylesheet" type="text/css" href="/src/dist/css/style.css" />
 	<script type="text/javascript" src="http://valentinowechat.samesamechina.com/api/v1/js/60c4349e-c302-4313-9fa8-37a8ebd59853/wechat"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d7d1af7688a53ead0361f6fbfe4c00c8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 	<script type="text/javascript" src="/src/dist/js/pay_all.min.js"></script>
 	 <script type="text/javascript">
     	//调用微信JS api 支付
@@ -20,7 +29,11 @@
     			<?php echo $jsApiParameters; ?>,
     			function(res){
     				WeixinJSBridge.log(res.err_msg);
-    				alert(res.err_code+res.err_desc+res.err_msg);
+//    				alert(res.err_code+res.err_desc+res.err_msg);
+
+					  if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+						Common.gotoPin(1);
+					  }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
     			}
     		);
     	}
@@ -78,6 +91,16 @@
 				</div>
 			</div>
 			<div class="btn btn-submit-order" onclick="callpay()"><span>确认付款</span></div>
+		</div>
+		<div class="pin pin-2" id="pin-pay-success">
+			<div class="v-content">
+				<h3>订单成功</h3>
+				<p class="des">
+					感谢您的购买<br>
+					我们将尽快安排相关工作人员与您联络
+				</p>
+				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div
+			</div>
 		</div>
 
 	</div>

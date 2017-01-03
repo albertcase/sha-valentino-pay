@@ -27,6 +27,7 @@
         Common.gotoPin(0);
         //submit the form
         $('#form-contact .btn-submit').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', '订单信息提交']);
             if(self.validateForm()){
                 console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
@@ -106,7 +107,7 @@
             Common.errorMsg.add(inputMail.parentElement,'邮箱不能为空');
             validate = false;
         }else{
-            var regMail=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            var regMail=/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
             if(!(regMail.test(inputMail.value))){
                 validate = false;
                 Common.errorMsg.add(inputMail.parentElement,'邮箱格式错误，请重新输入');
