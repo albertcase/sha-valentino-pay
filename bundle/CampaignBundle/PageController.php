@@ -26,6 +26,10 @@ class PageController extends Controller {
     	$this->render('order');
     }
 
+    public function reservationAction() {
+    	$this->render('reservation');
+    }
+
 	public function payAction() {
     	global $user;
 

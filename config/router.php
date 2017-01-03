@@ -12,6 +12,7 @@ $routers['/'] = array('CampaignBundle\Page', 'index');
 $routers['/clear'] = array('CampaignBundle\Page', 'clearCookie');
 $routers['/ec/pay'] = array('CampaignBundle\Page', 'pay');
 $routers['/ec/order'] = array('CampaignBundle\Page', 'order');
+$routers['/reservation'] = array('CampaignBundle\Page', 'reservation');
 $routers['/notify'] = array('CampaignBundle\Page', 'notify');
 $routers['/login'] = array('CampaignBundle\Page', 'login');
 $routers['/api/order'] = array('CampaignBundle\Api', 'order');
