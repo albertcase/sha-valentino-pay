@@ -146,9 +146,9 @@ class DatabaseAPI {
 	 */
 	public function insertSubmit($data){
 		$nowtime = NOWTIME;
-		$sql = "INSERT INTO `submit` SET `uid` = ?, `sex` = ?, `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `store` = ?, `month` = ?, `day` = ?, `time` = ?"; 
+		$sql = "INSERT INTO `submit` SET `uid` = ?, `sex` = ?, `name` = ?, `mobile` = ?, `email` = ?"; 
 		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("ssssssssss", $data->uid, $data->sex, $data->name, $data->mobile, $data->province, $data->city, $data->store, $data->month, $data->day, $data->time);
+		$res->bind_param("sssss", $data->uid, $data->sex, $data->name, $data->mobile, $data->email);
 		if($res->execute()) 
 			return $res->insert_id;
 		else 
