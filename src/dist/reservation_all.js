@@ -369,8 +369,9 @@ Api = {
         Common.gotoPin(0);
         //submit the reservation
         $('#form-contact .btn-submit').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'btn', 'click', '预约完成']);
             if(self.validateForm()){
-                console.log('通过前端验证，可以提交');
+                //console.log('通过前端验证，可以提交');
                 //sex  name  mobile email province city address
                 var sex = document.getElementById('input-title').value,
                     name = document.getElementById('input-name').value,
@@ -384,19 +385,19 @@ Api = {
                     email:email
                 };
                 Api.reservation(orderInfo,function(data){
-                    console.log(data);
-                    //if(data.status==1){
-                    //    //    提交成功，去订单确认页面
-                    //    self.verifyOrder();
-                    //}else if(data.status==5){
-                    //    //库存已用完，跳转到已售罄页面
-                    //    Common.gotoPin(0); /*同时修改按钮的值*/
-                    //}else{
-                    //    alert(data.msg);
-                    //}
+                    if(data.status==1){
+                        //    提交成功，去提示预约成功页面
+                        Common.gotoPin(1);
+                    }else{
+                        alert(data.msg);
+                    }
                 })
 
             }
+        });
+
+        $('#pin-pay-success .btn').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'link', 'click', '探索ROSSO VALENTINO系列']);
         });
 
     };
