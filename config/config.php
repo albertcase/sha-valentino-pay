@@ -1,11 +1,11 @@
 <?php
 
-define("BASE_URL", 'http://longines.samesamechina.com/');
+define("BASE_URL", 'http://rossovalentino.samesamechina.com/');
 define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 
 //User
-define("USER_STORAGE", 'SESSION');
+define("USER_STORAGE", 'COOKIE');
 
 //Wechat Vendor
 define("WECHAT_VENDOR", 'default'); // default | curio
