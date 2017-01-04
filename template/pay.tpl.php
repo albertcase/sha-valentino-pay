@@ -93,6 +93,9 @@
 			<div class="btn btn-submit-order" onclick="callpay()"><span>确认付款</span></div>
 		</div>
 		<div class="pin pin-2" id="pin-pay-success">
+			<div class="logo">
+				<img src="/src/images/logo.png" alt=""/>
+			</div>
 			<div class="v-content">
 				<h3>订单成功: <span><?php print $info->orderid;?></span></h3>
 				<p class="des">
