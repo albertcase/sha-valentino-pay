@@ -26,13 +26,13 @@
         self.initProvinceCity();
         Common.gotoPin(0);
 
-        $('#form-contact input').on('keyup',function(){
-            self.validateForm();
-        });
-
-        $('#form-contact select').on('change',function(){
-            self.validateForm();
-        });
+        //$('#form-contact input').on('blur',function(){
+        //    self.validateForm();
+        //});
+        //
+        //$('#form-contact select').on('change',function(){
+        //    self.validateForm();
+        //});
 
 
         //submit the form
@@ -137,7 +137,7 @@
             Common.errorMsg.remove(inputDetailAddress.parentElement);
         };
 
-        if(!inputProvince.value || inputProvince.value=='省份'){
+        if(!inputProvince.value || inputProvince.value=='省市'){
             Common.errorMsg.add(inputProvince.parentElement,'请选择省份');
             validate = false;
         }else{

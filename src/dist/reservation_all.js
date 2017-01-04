@@ -367,13 +367,13 @@ Api = {
     controller.prototype.orderForm = function(){
         var self = this;
         Common.gotoPin(0);
-        $('#form-contact input').on('keyup',function(){
-            self.validateForm();
-        });
-
-        $('#form-contact select').on('change',function(){
-            self.validateForm();
-        });
+        //$('#form-contact input').on('keyup',function(){
+        //    self.validateForm();
+        //});
+        //
+        //$('#form-contact select').on('change',function(){
+        //    self.validateForm();
+        //});
         //submit the reservation
         $('#form-contact .btn-submit span').on('touchstart', function(){
             _hmt.push(['_trackEvent', 'btn', 'click', '预约完成']);
