@@ -41,7 +41,8 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/ec';
+			window.location.href = '/ec/';
+			
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';

@@ -60,7 +60,8 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/ec';
+			window.location.href = '/ec/';
+			
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';

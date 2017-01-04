@@ -6,7 +6,7 @@
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/ec';
+			window.location.href = '/ec/';
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';
