@@ -1763,6 +1763,10 @@ html, body {
   font-size: 0.34rem;
   margin-bottom: 1rem;
 }
+#pin-pay-success h3 span {
+  font-size: 0.36rem;
+  letter-spacing: 0px;
+}
 #pin-pay-success .des {
   font-size: 0.28rem;
   margin-bottom: 1.3rem;

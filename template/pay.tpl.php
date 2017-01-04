@@ -94,12 +94,12 @@
 		</div>
 		<div class="pin pin-2" id="pin-pay-success">
 			<div class="v-content">
-				<h3>订单成功<?php print $info->orderid;?></h3>
+				<h3>订单成功: <span><?php print $info->orderid;?></span></h3>
 				<p class="des">
 					感谢您的购买<br>
 					我们将尽快安排相关工作人员与您联络
 				</p>
-				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div
+				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div>
 			</div>
 		</div>
 
