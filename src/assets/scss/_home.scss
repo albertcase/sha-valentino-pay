@@ -48,6 +48,10 @@ html,body{
     background: #6c0000;
     color: #f95f60;
     font-size: 0.32rem;
+    &:active{
+      background: #350000;
+      color: #efc8c8;
+    }
   }
 }
 
@@ -326,6 +330,11 @@ html,body{
   .des{
     font-size: 0.28rem;
     margin-bottom: 1.3rem;
+  }
+  .bags{
+    position: absolute;
+    bottom: 1.3rem;
+    left: 0;
   }
 }
 .btn-go span{

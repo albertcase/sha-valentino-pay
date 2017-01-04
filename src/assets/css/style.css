@@ -1503,6 +1503,10 @@ html, body {
   color: #f95f60;
   font-size: 0.32rem;
 }
+.btn span:active {
+  background: #350000;
+  color: #efc8c8;
+}
 
 .v-content {
   position: absolute;
@@ -1770,6 +1774,11 @@ html, body {
 #pin-pay-success .des {
   font-size: 0.28rem;
   margin-bottom: 1.3rem;
+}
+#pin-pay-success .bags {
+  position: absolute;
+  bottom: 1.3rem;
+  left: 0;
 }
 
 .btn-go span {

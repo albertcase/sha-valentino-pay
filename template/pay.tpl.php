@@ -93,6 +93,9 @@
 			<div class="btn btn-submit-order" onclick="callpay()"><span>确认付款</span></div>
 		</div>
 		<div class="pin pin-2" id="pin-pay-success">
+			<div class="logo">
+				<img src="/src/images/logo.png" alt=""/>
+			</div>
 			<div class="v-content">
 				<h3>订单成功: <span><?php print $info->orderid;?></span></h3>
 				<p class="des">
@@ -100,6 +103,9 @@
 					我们将尽快安排相关工作人员与您联络
 				</p>
 				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div>
+			</div>
+			<div class="bags">
+				<img src="/src/images/product-2.png" alt="valentino"/>
 			</div>
 		</div>
 
