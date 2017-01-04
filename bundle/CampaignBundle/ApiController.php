@@ -143,7 +143,7 @@ class ApiController extends Controller {
 		$input->SetBody("VALENTINO手提包");
 		$input->SetAttach("VALENTINO手提包");
 		$input->SetOut_trade_no($rs->orderid);
-		$input->SetTotal_fee("1");
+		$input->SetTotal_fee("1100000");
 		$input->SetTime_start($rs->start);
 		$input->SetTime_expire($rs->expire);
 		$input->SetGoods_tag("VALENTINO手提包");
