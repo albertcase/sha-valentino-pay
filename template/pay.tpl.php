@@ -104,6 +104,9 @@
 				</p>
 				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div>
 			</div>
+			<div class="bags">
+				<img src="/src/images/product-2.png" alt="valentino"/>
+			</div>
 		</div>
 
 	</div>
