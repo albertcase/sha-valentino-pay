@@ -48,6 +48,10 @@ html,body{
     background: #6c0000;
     color: #f95f60;
     font-size: 0.32rem;
+    &:active{
+      background: #350000;
+      color: #efc8c8;
+    }
   }
 }
 

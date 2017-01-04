@@ -1503,6 +1503,10 @@ html, body {
   color: #f95f60;
   font-size: 0.32rem;
 }
+.btn span:active {
+  background: #350000;
+  color: #efc8c8;
+}
 
 .v-content {
   position: absolute;
