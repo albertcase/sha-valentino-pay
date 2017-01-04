@@ -37,11 +37,6 @@ Api = {
             }
         });
 
-        //return callback({
-        //    status:1,
-        //    msg:'success'
-        //})
-
 
     },
     //预约到店
