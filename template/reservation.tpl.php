@@ -26,12 +26,14 @@
 	<div class="container animate">
 		<!--form page-->
 		<div class="pin pin-2" id="pin-reservation">
+			<div class="logo">
+				<img src="/src/images/logo.png" alt=""/>
+			</div>
 			<div class="v-content">
 				<!-- 添加修改地址-->
 				<form id="form-contact" class="">
-					<p class="title">预约前往精品店，探索ROSSO VALENTINO系列<br>
-						敬请填写您的联系方式<br>
-						我们将尽快安排相关工作人员与您联络
+					<p class="title">
+						<img src="/src/images/reservation-t1.png" alt="预约前往精品店，探索ROSSO VALENTINO系列">
 					</p>
 					<div class="form-information">
 						<div class="input-box input-box-title clearfix">
@@ -63,12 +65,20 @@
 			</div>
 		</div>
 		<div class="pin pin-2" id="pin-pay-success">
+			<div class="logo">
+				<img src="/src/images/logo.png" alt=""/>
+			</div>
 			<div class="v-content">
-				<p class="des">
-					感谢您的预约<br>
-					我们将尽快安排相关工作人员与您联络<br>
+				<p class="des2">
+					<img src="/src/images/reservation-t2.png" alt="感谢您的预约 我们将尽快安排相关工作人员与您联络">
 				</p>
-				<div class="btn btn-go hide"><span>探索ROSSO VALENTINO系列</span></div
+				<div class="btn btn-go">
+					<span>
+					<a href="http://rossovalentino.samesamechina.com/event/">
+						探索ROSSO VALENTINO系列
+					</a>
+					</span>
+				</div>
 			</div>
 		</div>
 
