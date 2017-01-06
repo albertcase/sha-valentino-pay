@@ -67,7 +67,7 @@
                         Common.goPayPage();
                     }else if(data.status==5){
                         //库存已用完，跳转到已售罄页面
-                        Common.goHomePage(); /*同时修改按钮的值*/
+                        Common.goHomePage(1); /*同时修改按钮的值*/
                     }else{
                         alert(data.msg);
                     }

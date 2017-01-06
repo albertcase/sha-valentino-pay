@@ -26,6 +26,9 @@
             //scrollbar: '.swiper-scrollbar',
         });
 
+        if(Common.getParameterByName('ishas') == 1){
+            $('.btn-buy span').html('现已售罄');
+        }
         $('.btn-buy').on('click',function(){
             _hmt.push(['_trackEvent', 'buttons', 'click', '即刻购买']);
             //    select product

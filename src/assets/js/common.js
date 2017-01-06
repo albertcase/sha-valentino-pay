@@ -5,8 +5,12 @@
 			$('.wrapper .pin').removeClass('current');
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
-		goHomePage:function(){
-			window.location.href = '/ec';
+		goHomePage:function(ishas){
+			if(ishas){
+				window.location.href = '/ec/?ishas=1';
+			}else{
+				window.location.href = '/ec/';
+			}
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';

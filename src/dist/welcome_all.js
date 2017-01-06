@@ -59,8 +59,12 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 			$('.wrapper .pin').removeClass('current');
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
-		goHomePage:function(){
-			window.location.href = '/ec';
+		goHomePage:function(ishas){
+			if(ishas){
+				window.location.href = '/ec/?ishas=1';
+			}else{
+				window.location.href = '/ec/';
+			}
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';
@@ -346,11 +350,6 @@ Api = {
             }
         });
 
-        //return callback({
-        //    status:1,
-        //    msg:'success'
-        //})
-
 
     },
     //预约到店
@@ -400,6 +399,9 @@ Api = {
             //scrollbar: '.swiper-scrollbar',
         });
 
+        if(Common.getParameterByName('ishas') == 1){
+            $('.btn-buy span').html('现已售罄');
+        }
         $('.btn-buy').on('click',function(){
             _hmt.push(['_trackEvent', 'buttons', 'click', '即刻购买']);
             //    select product

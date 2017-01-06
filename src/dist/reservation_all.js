@@ -40,8 +40,12 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.wrapper .pin').removeClass('current');
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
-		goHomePage:function(){
-			window.location.href = '/ec';
+		goHomePage:function(ishas){
+			if(ishas){
+				window.location.href = '/ec/?ishas=1';
+			}else{
+				window.location.href = '/ec/';
+			}
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';
@@ -326,11 +330,6 @@ Api = {
                 return callback(data);
             }
         });
-
-        //return callback({
-        //    status:1,
-        //    msg:'success'
-        //})
 
 
     },

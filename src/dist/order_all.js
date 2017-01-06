@@ -708,8 +708,12 @@ var region = [
 			$('.wrapper .pin').removeClass('current');
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
-		goHomePage:function(){
-			window.location.href = '/ec';
+		goHomePage:function(ishas){
+			if(ishas){
+				window.location.href = '/ec/?ishas=1';
+			}else{
+				window.location.href = '/ec/';
+			}
 		},
 		goOrderPage:function(){
 			window.location.href = '/ec/order';
@@ -995,11 +999,6 @@ Api = {
             }
         });
 
-        //return callback({
-        //    status:1,
-        //    msg:'success'
-        //})
-
 
     },
     //预约到店
@@ -1090,7 +1089,7 @@ Api = {
                         Common.goPayPage();
                     }else if(data.status==5){
                         //库存已用完，跳转到已售罄页面
-                        Common.goHomePage(); /*同时修改按钮的值*/
+                        Common.goHomePage(1); /*同时修改按钮的值*/
                     }else{
                         alert(data.msg);
                     }
