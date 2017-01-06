@@ -353,6 +353,10 @@ html,body{
     background: #6c0000;
     padding: 0.2rem 0.5rem;
     text-decoration: none;
+    &:active{
+      background: #350000;
+      color: #efc8c8;
+    }
   }
 }
 
