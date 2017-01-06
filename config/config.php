@@ -18,7 +18,7 @@ define("APPMCHID", '1339055101');
 define("APPKEY", '0e861438632e4359929e9dcc143acd47');
 define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '100');
-
+define("MAXQUOTA", '48');
 define("NONCESTR", '?????');
 
 //Redis config info

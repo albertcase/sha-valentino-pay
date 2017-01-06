@@ -74,7 +74,7 @@ class ApiController extends Controller {
 
 		$redis = new \Lib\RedisAPI();
     	$quota = $redis->quotaload();
-    	if ($quota >= 48) {
+    	if ($quota >= MAXQUOTA) {
     		$this->statusPrint('5', '商品已经售罄');
     	}
 
@@ -162,7 +162,7 @@ class ApiController extends Controller {
 	public function quotaAction() {
 		$redis = new \Lib\RedisAPI();
     	$rs = $redis->quotaload();
-    	if ($rs >= 48) {
+    	if ($rs >= MAXQUOTA) {
     		$status = 0;
     	} else {
     		$status = 1;
