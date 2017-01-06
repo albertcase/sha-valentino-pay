@@ -1800,6 +1800,10 @@ html, body {
   padding: 0.2rem 0.5rem;
   text-decoration: none;
 }
+.btn-go span a:active {
+  background: #350000;
+  color: #efc8c8;
+}
 
 #pin-reservation .title {
   color: #ffafb0;
