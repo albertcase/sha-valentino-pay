@@ -367,6 +367,6 @@ html,body{
     font-size: 0.28rem;
     margin-bottom: 0.6rem;
     letter-spacing: 0px;
-    @include size(5.75rem,1.02rem);
+    @include size(5.75rem,auto);
   }
 }
