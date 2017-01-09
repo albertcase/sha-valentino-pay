@@ -102,7 +102,7 @@
 					感谢您的购买<br>
 					我们将尽快安排相关工作人员与您联络
 				</p>
-				<div class="btn hide"><span>探索ROSSO VALENTINO系列</span></div>
+				<div class="btn btn-go"><span>探索ROSSO VALENTINO系列</span></div>
 			</div>
 			<div class="bags">
 				<img src="/src/images/product-2.png" alt="valentino"/>
