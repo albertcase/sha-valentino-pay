@@ -1611,7 +1611,8 @@ html, body {
 .pin-1 .btn-buy {
   margin-top: 1.2rem;
 }
-.pin-1 .gorosso {
+
+.gorosso {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1623,7 +1624,7 @@ html, body {
   color: #fdc5cb;
   font-size: 0.28rem;
 }
-.pin-1 .gorosso a {
+.gorosso a {
   color: #fdc5cb;
   text-decoration: none;
 }
@@ -1890,6 +1891,9 @@ html, body {
   color: #efc8c8;
 }
 
+#pin-reservation {
+  position: relative;
+}
 #pin-reservation .title {
   color: #ffafb0;
   font-size: 0.28rem;

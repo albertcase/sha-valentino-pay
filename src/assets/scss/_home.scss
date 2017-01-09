@@ -94,20 +94,20 @@ html,body{
   .btn-buy{
     margin-top: 1.2rem;
   }
-  .gorosso{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    @include size(100vw,1.1rem);
-    line-height: 1.1rem;
-    background: #900218;
-    text-align: center;
+}
+.gorosso{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include size(100vw,1.1rem);
+  line-height: 1.1rem;
+  background: #900218;
+  text-align: center;
+  color: #fdc5cb;
+  font-size: 0.28rem;
+  a{
     color: #fdc5cb;
-    font-size: 0.28rem;
-    a{
-      color: #fdc5cb;
-      text-decoration: none;
-    }
+    text-decoration: none;
   }
 }
 
@@ -385,6 +385,7 @@ html,body{
 
 //for pin-reservation
 #pin-reservation{
+  position: relative;
   .title{
     color: #ffafb0;
     font-size: 0.28rem;
