@@ -71,7 +71,9 @@
 				</form>
 			</div>
 			<div class="gorosso">
-				<a href="http://rossovalentino.samesamechina.com/event/">探索ROSSO VALENTINO系列</a>
+				<a href="http://rossovalentino.samesamechina.com/event/">
+					<img src="/src/images/t1-search.png" alt="探索ROSSO VALENTINO系列"/>
+				</a>
 			</div>
 		</div>
 		<div class="pin pin-2" id="pin-pay-success">

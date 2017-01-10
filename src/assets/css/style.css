@@ -1625,8 +1625,15 @@ html, body {
   font-size: 0.28rem;
 }
 .gorosso a {
+  display: block;
   color: #fdc5cb;
   text-decoration: none;
+  text-align: center;
+}
+.gorosso a img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 3.61rem;
 }
 
 .product-wrap {
@@ -1701,32 +1708,7 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
-  background: #8c151f;
-  padding: 0.3rem 0.2rem;
-}
-.product-block > span {
-  display: block;
-  float: left;
-}
-.product-block .product-img {
-  width: 45%;
-}
-.product-block .product-name {
-  color: #fdc5cb;
-  font-size: 0.24rem;
-  letter-spacing: 0px;
-}
-.product-block .num-price {
-  position: absolute;
-  bottom: 0.2rem;
-  right: 0.2rem;
-  letter-spacing: 0px;
-  color: #fdc5cb;
-  font-size: 0.24rem;
-  text-align: right;
-}
-.product-block .num-price span {
-  display: block;
+  padding: 0;
 }
 
 #form-contact .input-box {

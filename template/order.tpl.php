@@ -32,18 +32,12 @@
 	<div class="container animate">
 		<!--form page-->
 		<div class="pin pin-2">
-
 			<div class="logo">
 				<img src="/src/images/logo.png" alt=""/>
 			</div>
 			<!-- 选中购买的商品信息-->
 			<div class="product-block">
-				<span class="product-img"><img src="/src/images/product-1.png" alt=""/></span>
-				<span class="product-name">红色SPIKE铆钉链条包</span>
-				<div class="num-price">
-					<span class="product-num">x1</span>
-					<span class="product-price">¥ 11,000</span>
-				</div>
+				<img src="/src/images/product-info.png" alt="红色SPIKE铆钉链条包"/>
 			</div>
 			<!-- 添加修改地址-->
 			<form id="form-contact" class="">
