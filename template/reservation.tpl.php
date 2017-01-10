@@ -26,7 +26,7 @@
 <div id="orientLayer" class="mod-orient-layer">
     <div class="mod-orient-layer__content">
         <i class="icon mod-orient-layer__icon-orient"></i>
-        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
+        <div class="mod-orient-layer__desc">请在解锁模式下使用竖屏浏览</div>
     </div>
 </div>
 <div class="wrapper">
