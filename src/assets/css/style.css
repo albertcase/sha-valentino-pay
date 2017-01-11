@@ -1581,10 +1581,6 @@ html, body {
 .btn {
   text-align: center;
 }
-.btn.btn-buy span:active {
-  background: #6c0000;
-  color: #f95f60;
-}
 .btn span {
   display: inline-block;
   padding: 0.2rem 1rem;
